@@ -1,7 +1,10 @@
 # PLAN — Erika portal: next steps, ten weeks
 
-> DRAFT — pending Erika's review. Web version: `portal/index.html` (open locally or via
-> the published artifact link). Grant deadlines verified 2026-07-26 — re-check before relying.
+> DRAFT — pending Erika's review. Public site: `docs/index.html`, deployed to GitHub Pages
+> on merge (https://tandem-engineering-group.github.io/3D-Fabric/). Canonical source:
+> `portal/index.html`; rebuild with `python scripts/build_portal_site.py`.
+> Erika's design brief: `designs/first-purse-brief.md` (or the site's "First purse" tab).
+> Grant deadlines verified 2026-07-26 — re-check before relying.
 
 ## Where the project is today
 
