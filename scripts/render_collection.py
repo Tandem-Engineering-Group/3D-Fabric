@@ -110,4 +110,5 @@ def main():
     print(f"[collection] done: {len(concepts)} concepts")
 
 
-main()
+if __name__ == "__main__":
+    main()

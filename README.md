@@ -36,8 +36,8 @@ Outputs land in `patterns/<name>/` (labeled pattern SVG + pieces.json),
 `techpack/<name>.md`. Every stage is also a standalone CLI in `pipeline/` — run any
 of them with `--help`.
 
-**Demo result (FeltCheck Tote):** 7 pieces, 22.44 in of a 54 in roll, 58.2% utilization,
-0.69 yd → **$12.34/unit** at draft canvas pricing — computed in 5.8 s from mesh to tech pack.
+**Demo result (FeltCheck Tote):** 7 pieces, 15.54 in of a 54 in roll, 83.8% utilization,
+0.47 yd → **$8.55/unit** at draft canvas pricing — computed in 5.8 s from mesh to tech pack.
 
 All generated patterns and takeoffs are stamped `DRAFT — unverified` until a human
 approves them. **AI drafts, engineers seal.**

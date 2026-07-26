@@ -236,16 +236,22 @@ def nest_pieces(pieces: list[dict], width_in: float = common.DEFAULT_SHEET_WIDTH
         for copy_i in range(1, qty + 1):
             xs = sorted(cand_xs)
             ys = sorted(cand_ys)
-            best = None  # (y, x, variant)
+            # Score across rotations by how far the piece TOP would extend the
+            # marker (y + h), not just bottom-left (y, x) — otherwise a long
+            # strap stands upright at (0,0) and pins the whole sheet length
+            # when lying flat costs nothing.
+            best = None  # (top_y, y, x, variant)
             for v in variants:
                 if v["w"] > sheet_w + 1e-6:
                     continue
-                hit = _first_fit(v, xs, ys, sheet_w, tree, best)
+                hit = _first_fit(v, xs, ys, sheet_w, tree, None)
                 if hit is not None:
-                    best = (hit[0], hit[1], v)
+                    score = (hit[0] + v["h"], hit[0], hit[1])
+                    if best is None or score < best[:3]:
+                        best = (*score, v)
             if best is None:  # unreachable: top-of-sheet candidate always fits
                 raise RuntimeError(f"{pid}: no valid position found")
-            y, x, v = best
+            _top, y, x, v = best
             poly = affinity.translate(v["norm"], x, y)
             placed.append(poly)
             placed_pad.append(affinity.translate(v["norm_pad"], x, y))

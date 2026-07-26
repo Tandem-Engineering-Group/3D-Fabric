@@ -6,10 +6,10 @@
   "unit": "yard",
   "qty": 1,
   "sheet_width_in": 54.0,
-  "utilization": 0.58197572,
+  "utilization": 0.83847021,
   "waste_factor": 0.1,
-  "linear_yd_per_unit": 0.6857,
-  "material_cost_per_unit_usd": 12.34,
+  "linear_yd_per_unit": 0.4748,
+  "material_cost_per_unit_usd": 8.55,
   "assumptions": [
     "Prices in the material price book are DRAFT placeholders until verified against vendor quotes.",
     "Waste factor 10% applied on top of the nested layout."
