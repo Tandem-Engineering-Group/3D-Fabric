@@ -29,11 +29,16 @@ result = {"enabled": [], "errors": []}
 
 
 def zip_addon_dir(src: Path, module_name: str) -> Path:
-    """Zip a cloned addon repo as <module_name>/ so Blender gets a clean module."""
+    """Zip a cloned addon repo as <module_name>/ so Blender gets a clean module.
+    Applies a headless-compat shim: context.area is None in --background, so
+    bare UI-redraw calls crash operators that otherwise finished their work."""
     zpath = STAGE / f"{module_name}.zip"
     with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as zf:
         for f in src.rglob("*.py"):
-            zf.write(f, f"{module_name}/{f.relative_to(src)}")
+            text = f.read_text(encoding="utf-8").replace(
+                "context.area.tag_redraw()",
+                "context.area and context.area.tag_redraw()")
+            zf.writestr(f"{module_name}/{f.relative_to(src)}", text)
     return zpath
 
 
