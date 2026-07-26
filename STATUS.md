@@ -5,17 +5,18 @@
 | Task | Component | Status | Notes |
 |------|-----------|--------|-------|
 | T00 | Repo init, layout, remote, first push | 🟢 GREEN | Pushed to Tandem-Engineering-Group/3D-Fabric |
-| T01 | Weight downloads (TripoSR → TRELLIS.2-4B → Hunyuan3D-2.1) | 🔵 RUNNING | All three ungated, no HF token needed. `logs/dl-weights.log` |
-| T01 | Vendor clones (seams-to-sewing, blender-mcp, ComfyUI, deepnest-next) | 🔵 RUNNING | `logs/clone-vendor.log` |
+| T01 | Weight downloads (TripoSR ✅ → TRELLIS.2-4B → Hunyuan3D-2.1) | 🔵 RUNNING | TripoSR complete; TRELLIS.2 streaming. `logs/dl-weights.log` |
+| T01 | Vendor clones (seams-to-sewing, blender-mcp, ComfyUI, deepnest-next, TripoSR) | 🟢 GREEN | `logs/clone-vendor.log` |
+| T01 | AI runtime venv (.venv-ai, torch cu126) | 🔵 RUNNING | `logs/ai-env-setup.log` |
 | T02 | Blender 4.5 LTS, Inkscape, 7zip, uv | 🔵 RUNNING | Python 3.13/3.12 + git + gh preinstalled. `logs/install-apps.log` |
 | T03 | Blender add-ons installed headless | ⚪ PENDING | seams-to-sewing-pattern + blender-mcp addon |
-| T04 | Nesting engine | ⚪ PENDING | shapely bottom-left-fill primary; deepnest reference only |
-| T05 | pipeline/MeshPrep.py | ⚪ PENDING | |
-| T05 | pipeline/SeamsAndFlatten.py | ⚪ PENDING | |
-| T05 | pipeline/Nesting.py | ⚪ PENDING | |
-| T05 | pipeline/Takeoff.py | ⚪ PENDING | |
-| T05 | pipeline/TechPack.py | ⚪ PENDING | |
-| T05 | pipeline/Img2Mesh.py | ⚪ PENDING | |
+| T04 | Nesting engine | 🔵 RUNNING | shapely bottom-left-fill primary; deepnest reference only |
+| T05 | pipeline/MeshPrep.py | 🔵 RUNNING | build+review agents in flight |
+| T05 | pipeline/SeamsAndFlatten.py | 🔵 RUNNING | build+review agents in flight |
+| T05 | pipeline/Nesting.py | 🔵 RUNNING | build+review agents in flight |
+| T05 | pipeline/Takeoff.py | 🔵 RUNNING | build+review agents in flight |
+| T05 | pipeline/TechPack.py | 🔵 RUNNING | build+review agents in flight |
+| T05 | pipeline/Img2Mesh.py | 🔵 RUNNING | build+review agents in flight |
 | T06 | End-to-end demo: FeltCheck Tote | ⚪ PENDING | The proof artifact |
 | T07 | AI leg: image → mesh → pattern | ⚪ PENDING | Needs T01 weights |
 | T08 | run_pipeline.py one-command entry | ⚪ PENDING | |
