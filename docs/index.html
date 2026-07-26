@@ -226,6 +226,35 @@
     .sil:hover { border-color: var(--copper); transform: translateY(-2px); }
   }
 
+  /* 3D models */
+  .mcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+  .mcard { background: var(--card); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
+  .mview { position: relative; aspect-ratio: 1 / 1; background: var(--paper); border-bottom: 1px dashed var(--line); }
+  .mview img, .mview model-viewer { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .mview model-viewer { --poster-color: transparent; }
+  .mview .noimg {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 13px;
+  }
+  .mbody { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+  .mbody b { font-size: 14.5px; }
+  .mact { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap; }
+  .btn {
+    appearance: none; cursor: pointer; border-radius: 3px; font: 600 12.5px/1 inherit;
+    padding: 8px 12px; letter-spacing: .03em; text-decoration: none; display: inline-block;
+  }
+  .btn.solid { background: var(--denim); color: var(--paper); border: 1px solid var(--denim); }
+  .btn.ghost { background: transparent; color: var(--denim); border: 1px solid var(--denim); }
+  .btn:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+  .dropzone {
+    margin-top: 26px; border: 2px dashed var(--denim); border-radius: 4px;
+    background: var(--card); padding: 26px 20px; text-align: center; color: var(--muted);
+    font-size: 14.5px;
+  }
+  .dropzone.armed { border-color: var(--copper); color: var(--ink); }
+  .dropzone model-viewer { width: 100%; height: 420px; display: block; }
+  .mnote { margin-top: 14px; font-size: 13px; color: var(--muted); }
+
   a { color: var(--denim); text-decoration-thickness: 1px; text-underline-offset: 2px; }
   a:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
   .foot { margin-top: 40px; font-size: 13px; color: var(--muted); }
@@ -250,6 +279,7 @@
     <button class="tab" id="tab-status" role="tab" aria-selected="true" aria-controls="panel-status" data-panel="status">Where we are</button>
     <button class="tab" id="tab-plan" role="tab" aria-selected="false" aria-controls="panel-plan" data-panel="plan">Ten-week plan</button>
     <button class="tab" id="tab-brief" role="tab" aria-selected="false" aria-controls="panel-brief" data-panel="brief">First purse — the brief</button>
+    <button class="tab" id="tab-models" role="tab" aria-selected="false" aria-controls="panel-models" data-panel="models">3D models</button>
   </nav>
 
   <!-- ============ TAB: STATUS ============ -->
@@ -635,6 +665,32 @@
     </section>
   </div>
 
+  <!-- ============ TAB: 3D MODELS ============ -->
+  <div class="panel" id="panel-models" role="tabpanel" aria-labelledby="tab-models" hidden>
+    <section>
+      <h2>The 3D models</h2>
+      <p class="lede">Every bag as a real 3D file. <b>View in 3D</b> spins it right here —
+      drag to rotate, pinch or scroll to zoom. <b>Download</b> grabs the .glb (all under
+      1&nbsp;MB); it opens in Blender, on an iPhone (AR Quick Look via a converter), or any
+      glTF viewer.</p>
+      <div class="mcards" id="mcards"></div>
+
+      <div class="dropzone" id="dropzone">
+        <b>Preview your own model:</b> drag a .glb file here (or click to choose one).
+        It stays on your device — nothing is uploaded.
+        <input type="file" id="dropfile" accept=".glb" hidden>
+      </div>
+
+      <p class="mnote"><b>To add a model to this page permanently:</b> on GitHub, open
+      <a href="https://github.com/Tandem-Engineering-Group/3D-Fabric/tree/main/docs/models">docs/models</a>
+      → “Add file” → “Upload files”. New .glb files show up here automatically on the next
+      visit. Optional matching preview image: same name as a .jpg in
+      <a href="https://github.com/Tandem-Engineering-Group/3D-Fabric/tree/main/docs/thumbs">docs/thumbs</a>.</p>
+      <p class="mnote">The interactive viewer needs the public site (it loads Google's
+      model-viewer library); in a restricted preview you'll see stills and download links only.</p>
+    </section>
+  </div>
+
   <hr class="seam">
 
   <footer class="foot">
@@ -654,6 +710,7 @@
 
 </div>
 
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <script>
   (function () {
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
@@ -673,10 +730,133 @@
     });
     function fromHash() {
       var h = location.hash.replace('#', '');
-      if (h === 'plan' || h === 'brief' || h === 'status') show(h);
+      if (h === 'plan' || h === 'brief' || h === 'status' || h === 'models') show(h);
     }
     window.addEventListener('hashchange', fromHash);
     fromHash();
+  })();
+
+  (function () {
+    var BAKED = [
+      { file: 'the-313.glb',                  name: 'The 313' },
+      { file: 'midnight-on-woodward.glb',     name: 'Midnight on Woodward' },
+      { file: 'belle-isle.glb',               name: 'Belle Isle' },
+      { file: 'eastern-market-saturday.glb',  name: 'Eastern Market Saturday' },
+      { file: 'riverwalk-blues.glb',          name: 'Riverwalk Blues' },
+      { file: 'grandmas-sunday-best.glb',     name: "Grandma's Sunday Best" },
+      { file: 'first-snow-on-second-ave.glb', name: 'First Snow on Second Ave' },
+      { file: 'cognac-hour.glb',              name: 'Cognac Hour' },
+      { file: 'the-muralist.glb',             name: 'The Muralist' },
+      { file: 'spirit.glb',                   name: 'Spirit' },
+      { file: 'CrescentDemo.glb',             name: 'Crescent (demo)' },
+      { file: 'FeltCheckTote.glb',            name: 'FeltCheck Tote' },
+      { file: 'TestPurse.glb',                name: 'Test Purse (AI proof)' }
+    ];
+    var grid = document.getElementById('mcards');
+    if (!grid) return;
+    var hasViewer = function () { return !!window.customElements && !!customElements.get('model-viewer'); };
+    // The viewer library loads as a deferred module, so check at click time, not build time.
+    function withViewer(cb) {
+      if (hasViewer()) return cb(true);
+      if (!window.customElements) return cb(false);
+      var done = false;
+      customElements.whenDefined('model-viewer').then(function () { if (!done) { done = true; cb(true); } });
+      setTimeout(function () { if (!done) { done = true; cb(hasViewer()); } }, 3000);
+    }
+
+    function makeViewer(src, poster) {
+      var mv = document.createElement('model-viewer');
+      mv.setAttribute('src', src);
+      if (poster) mv.setAttribute('poster', poster);
+      mv.setAttribute('camera-controls', '');
+      mv.setAttribute('auto-rotate', '');
+      mv.setAttribute('shadow-intensity', '1');
+      mv.setAttribute('touch-action', 'pan-y');
+      return mv;
+    }
+
+    function card(m) {
+      var el = document.createElement('article');
+      el.className = 'mcard';
+      var view = document.createElement('div');
+      view.className = 'mview';
+      var thumb = m.thumb !== undefined ? m.thumb : 'thumbs/' + m.file.replace(/\.glb$/i, '') + '.jpg';
+      if (thumb) {
+        var img = document.createElement('img');
+        img.src = thumb; img.alt = m.name + ' render'; img.loading = 'lazy';
+        img.onerror = function () {
+          var d = document.createElement('div'); d.className = 'noimg'; d.textContent = 'no preview yet';
+          view.replaceChild(d, img);
+        };
+        view.appendChild(img);
+      } else {
+        var d = document.createElement('div'); d.className = 'noimg'; d.textContent = 'no preview yet';
+        view.appendChild(d);
+      }
+      var body = document.createElement('div');
+      body.className = 'mbody';
+      var title = document.createElement('b'); title.textContent = m.name;
+      var act = document.createElement('div'); act.className = 'mact';
+      var vb = document.createElement('button');
+      vb.className = 'btn solid'; vb.type = 'button'; vb.textContent = 'View in 3D';
+      vb.addEventListener('click', function () {
+        vb.disabled = true;
+        withViewer(function (ok) {
+          if (!ok) { vb.textContent = '3D viewer unavailable here'; return; }
+          view.innerHTML = '';
+          view.appendChild(makeViewer(m.src || ('models/' + m.file), null));
+          vb.remove();
+        });
+      });
+      act.appendChild(vb);
+      var dl = document.createElement('a');
+      dl.className = 'btn ghost'; dl.textContent = 'Download .glb';
+      dl.href = m.src || ('models/' + m.file); dl.setAttribute('download', m.file);
+      act.appendChild(dl);
+      body.appendChild(title); body.appendChild(act);
+      el.appendChild(view); el.appendChild(body);
+      return el;
+    }
+
+    BAKED.forEach(function (m) { grid.appendChild(card(m)); });
+
+    // Anything uploaded to docs/models on GitHub appears automatically.
+    var known = {};
+    BAKED.forEach(function (m) { known[m.file.toLowerCase()] = true; });
+    fetch('https://api.github.com/repos/Tandem-Engineering-Group/3D-Fabric/contents/docs/models')
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (items) {
+        (items || []).forEach(function (it) {
+          if (!/\.glb$/i.test(it.name) || known[it.name.toLowerCase()]) return;
+          grid.appendChild(card({
+            file: it.name,
+            name: it.name.replace(/\.glb$/i, '').replace(/[-_]+/g, ' '),
+            src: it.download_url
+          }));
+        });
+      })
+      .catch(function () { /* offline or restricted preview — baked list already shown */ });
+
+    // Local preview drop zone — files never leave the device.
+    var dz = document.getElementById('dropzone');
+    var fi = document.getElementById('dropfile');
+    function preview(file) {
+      if (!file || !/\.glb$/i.test(file.name)) return;
+      withViewer(function (ok) {
+        if (!ok) { dz.textContent = 'The 3D viewer could not load here — open the public site to preview models.'; return; }
+        var url = URL.createObjectURL(file);
+        dz.classList.add('armed');
+        dz.innerHTML = '<b>' + file.name.replace(/[<>&]/g, '') + '</b>';
+        dz.appendChild(makeViewer(url, null));
+      });
+    }
+    if (dz && fi) {
+      dz.addEventListener('click', function (e) { if (e.target === dz || e.target.tagName === 'B') fi.click(); });
+      fi.addEventListener('change', function () { preview(fi.files[0]); });
+      dz.addEventListener('dragover', function (e) { e.preventDefault(); dz.classList.add('armed'); });
+      dz.addEventListener('dragleave', function () { dz.classList.remove('armed'); });
+      dz.addEventListener('drop', function (e) { e.preventDefault(); preview(e.dataTransfer.files[0]); });
+    }
   })();
 </script>
 </body>
