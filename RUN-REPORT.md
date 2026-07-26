@@ -45,7 +45,6 @@ TripoSR image→mesh: 27 s cold / ~10 s warm, ~5.3 GB VRAM on the RTX 4080 SUPER
 - **Nesting** is greedy bottom-left-fill — good for estimates; deepnest-next sits in
   vendor/ for manual comparisons on production layouts.
 - **materials.yaml prices are placeholders** awaiting real vendor quotes.
-- Inkscape/7zip/uv winget installs were still finishing at close (not on critical path).
 
 ## Recommended next session
 1. Curated-seam workflow: seams.json authoring guide + blender-mcp interactive session;

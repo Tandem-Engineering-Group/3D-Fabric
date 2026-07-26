@@ -10,7 +10,7 @@ Legend: 🟢 GREEN (works, verified) · 🟡 AMBER (works, caveats) · 🔴 RED 
 | T01 | Vendor clones (seams-to-sewing, blender-mcp, ComfyUI, deepnest-next, TripoSR) | 🟢 GREEN | ComfyUI deps deferred — not on critical path |
 | T01 | AI venv (.venv-ai): torch 2.13 cu126, CUDA verified | 🟢 GREEN | transformers pinned 4.40.2 (see RUN-REPORT) |
 | T02 | Blender | 🟢 GREEN | 4.5.10 LTS installed; 5.1.2 was already present — pipeline uses 5.1, addon verified on both |
-| T02 | Inkscape, 7zip, uv | 🔵 RUNNING | winget job still installing at close; not on critical path. `logs/install-apps.log` |
+| T02 | Inkscape, 7zip, uv | 🟢 GREEN | Inkscape 1.4.4, 7-Zip 26.02, uv 0.11.16 — all verified from fresh shell |
 | T03 | Add-ons headless (seams_to_sewing_pattern, blender_mcp) | 🟢 GREEN | Installed+enabled in 4.5 and 5.1; headless `context.area` shim applied at zip time |
 | T04 | Nesting engine | 🟢 GREEN | shapely bottom-left-fill; 60-piece stress 3.3s, 78.6% util, 0 overlaps. deepnest-next kept in vendor/ as manual QA tool (🟡 vs Deepnest quality) |
 | T05 | pipeline/MeshPrep.py | 🟢 GREEN | Blender-headless cleanup/decimate + meshstats.json |
