@@ -1,0 +1,25 @@
+# Material price book — used by pipeline/Takeoff.py
+# Prices are PLACEHOLDERS marked draft until verified against real vendor quotes.
+# width_in: usable roll width. Leather is per-hide: set unit: hide and sheet dims.
+defaults:
+  fabric_width_in: 54
+  seam_allowance_mm: 10
+  waste_factor: 0.10        # applied on top of nested utilization
+
+materials:
+  canvas:
+    display: "Cotton canvas 12oz"
+    unit: yard
+    width_in: 54
+    price_usd: 18.00        # DRAFT placeholder from BOOTSTRAP T06
+  felt:
+    display: "Wool-blend felt 3mm (fit-check)"
+    unit: yard
+    width_in: 60
+    price_usd: 14.00        # DRAFT placeholder
+  leather_fullgrain:
+    display: "Full-grain leather, medium temper"
+    unit: hide
+    sheet_w_in: 48          # workable rectangle approximation of a side/hide
+    sheet_h_in: 24
+    price_usd: 160.00       # DRAFT placeholder per hide
