@@ -1,0 +1,31 @@
+# Large / third-party / local-only — never commit (public repo, 50MB hard cap)
+weights/
+vendor/
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Blender
+*.blend1
+*.blend2
+
+# Archives & model weights (belt-and-suspenders)
+*.zip
+*.7z
+*.safetensors
+*.ckpt
+*.pth
+*.bin
+
+# Local-only business documents — public repo carries no personal data
+*.pdf
+
+# OS noise
+Thumbs.db
+desktop.ini
