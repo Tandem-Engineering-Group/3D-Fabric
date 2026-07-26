@@ -1,0 +1,673 @@
+<title>Erika — Project Portal · 3D-Fabric</title>
+<style>
+  :root {
+    --paper: #F3F4F2;
+    --card: #FFFFFF;
+    --ink: #20262B;
+    --muted: #5C6670;
+    --line: #D8DCD9;
+    --denim: #33608D;
+    --denim-soft: #E4EBF2;
+    --copper: #B65C32;
+    --copper-soft: #F4E7DF;
+    --plum: #7E5578;
+    --plum-soft: #EFE6EE;
+    --green: #2E7D4F;
+    --green-soft: #E3EFE7;
+    --amber: #9A6E0D;
+    --amber-soft: #F5EDD8;
+    --red: #B3403A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14181C; --card: #1D2329; --ink: #E7EAE6; --muted: #99A3AB; --line: #333B42;
+      --denim: #8AB0D8; --denim-soft: #23303E; --copper: #DB9067; --copper-soft: #3A2A20;
+      --plum: #C495BD; --plum-soft: #342933; --green: #6DBE8F; --green-soft: #21322A;
+      --amber: #D9B356; --amber-soft: #362E1A; --red: #E08A85;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #F3F4F2; --card: #FFFFFF; --ink: #20262B; --muted: #5C6670; --line: #D8DCD9;
+    --denim: #33608D; --denim-soft: #E4EBF2; --copper: #B65C32; --copper-soft: #F4E7DF;
+    --plum: #7E5578; --plum-soft: #EFE6EE; --green: #2E7D4F; --green-soft: #E3EFE7;
+    --amber: #9A6E0D; --amber-soft: #F5EDD8; --red: #B3403A;
+  }
+  :root[data-theme="dark"] {
+    --paper: #14181C; --card: #1D2329; --ink: #E7EAE6; --muted: #99A3AB; --line: #333B42;
+    --denim: #8AB0D8; --denim-soft: #23303E; --copper: #DB9067; --copper-soft: #3A2A20;
+    --plum: #C495BD; --plum-soft: #342933; --green: #6DBE8F; --green-soft: #21322A;
+    --amber: #D9B356; --amber-soft: #362E1A; --red: #E08A85;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 40px 22px 72px; }
+
+  h1, h2, h3 {
+    font-family: "Superclarendon", Rockwell, "Roboto Slab", "Bookman Old Style", Georgia, serif;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--copper); font-weight: 600; margin-bottom: 10px;
+  }
+  h1 { font-size: clamp(28px, 5vw, 42px); }
+  .sub { color: var(--muted); max-width: 62ch; margin: 14px 0 0; }
+  .seam {
+    border: 0; border-top: 2px dashed var(--copper);
+    opacity: .55; margin: 36px 0 30px;
+  }
+  section h2 { font-size: clamp(21px, 3vw, 27px); margin-bottom: 6px; }
+  .lede { color: var(--muted); margin: 0 0 20px; max-width: 68ch; }
+
+  .draftflag {
+    display: inline-block; margin-top: 16px; padding: 4px 12px;
+    border: 1.5px dashed var(--amber); color: var(--amber);
+    border-radius: 3px; font-size: 12px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 600;
+  }
+
+  /* tabs */
+  .tabs {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 28px 0 0; padding-bottom: 0;
+    border-bottom: 2px dashed var(--copper);
+  }
+  .tab {
+    appearance: none; background: transparent; border: 1px solid var(--line);
+    border-bottom: none; border-radius: 4px 4px 0 0;
+    color: var(--muted); cursor: pointer;
+    font: 600 14px/1 "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    letter-spacing: .04em; padding: 11px 18px 12px;
+  }
+  .tab[aria-selected="true"] {
+    background: var(--card); color: var(--ink);
+    border-color: var(--copper);
+  }
+  .tab:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+  .panel[hidden] { display: none; }
+  .panel { padding-top: 34px; }
+
+  /* pipeline strip */
+  .pipe { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 22px 0 10px; }
+  .stage {
+    background: var(--card); border: 1px solid var(--line); border-radius: 3px;
+    padding: 7px 13px; font-size: 13.5px; font-weight: 600; white-space: nowrap;
+    border-left: 3px solid var(--green);
+  }
+  .stage small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+  .pipe .tie { color: var(--copper); font-size: 13px; letter-spacing: 2px; user-select: none; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 18px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 13px 15px; }
+  .stat b {
+    display: block; font-size: 22px; letter-spacing: -0.01em;
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat span { font-size: 12.5px; color: var(--muted); }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .twocol { grid-template-columns: 1fr; } }
+  .board { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; }
+  .board h3 { font-size: 16px; margin-bottom: 10px; }
+  .board ul { margin: 0; padding-left: 18px; }
+  .board li { margin: 7px 0; font-size: 14.5px; }
+  .board li::marker { color: var(--muted); }
+  .board.good h3 { color: var(--green); }
+  .board.warn h3 { color: var(--amber); }
+
+  /* track legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 22px; }
+  .chip {
+    font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 999px;
+  }
+  .chip.purse { background: var(--denim-soft); color: var(--denim); }
+  .chip.book  { background: var(--plum-soft);  color: var(--plum); }
+  .chip.grant { background: var(--copper-soft); color: var(--copper); }
+
+  /* week rows */
+  .week { background: var(--card); border: 1px solid var(--line); border-radius: 4px; margin-bottom: 12px; overflow: hidden; }
+  .week-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+    padding: 11px 18px 9px; border-bottom: 1px dashed var(--line);
+  }
+  .wk-num {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; font-weight: 700; color: var(--copper);
+  }
+  .wk-dates { font-size: 13.5px; color: var(--muted); }
+  .wk-flag {
+    margin-left: auto; font-size: 12px; font-weight: 700;
+    color: var(--red); letter-spacing: .04em;
+  }
+  .wk-flag.ok { color: var(--green); }
+  .tracks { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 860px) { .tracks { grid-template-columns: 1fr; } }
+  .track { padding: 13px 18px 15px; border-left: 3px solid transparent; }
+  .track + .track { border-top: 1px dashed var(--line); }
+  @media (min-width: 861px) { .track + .track { border-top: 0; } }
+  .track.purse { border-left-color: var(--denim); }
+  .track.book  { border-left-color: var(--plum); }
+  .track.grant { border-left-color: var(--copper); }
+  .track h4 {
+    margin: 0 0 6px; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 700;
+  }
+  .track.purse h4 { color: var(--denim); }
+  .track.book h4  { color: var(--plum); }
+  .track.grant h4 { color: var(--copper); }
+  .track ul { margin: 0; padding-left: 16px; }
+  .track li { font-size: 14px; margin: 5px 0; }
+
+  /* goals */
+  .goals { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .goals { grid-template-columns: 1fr; } }
+  .goal { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; }
+  .goal h3 { font-size: 17px; margin-bottom: 8px; }
+  .goal p { margin: 0; font-size: 14.5px; color: var(--muted); }
+  .goal p b { color: var(--ink); }
+  .flywheel {
+    margin: 22px 0 0; padding: 18px 22px; border: 1.5px dashed var(--copper); border-radius: 4px;
+    font-size: 15px; background: var(--card);
+  }
+  .flywheel b { color: var(--copper); }
+
+  /* design brief */
+  .qs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  @media (max-width: 780px) { .qs { grid-template-columns: 1fr; } }
+  .q {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    padding: 16px 18px 15px; position: relative;
+  }
+  .q .qn {
+    font-family: "Superclarendon", Rockwell, "Roboto Slab", Georgia, serif;
+    font-size: 26px; color: var(--copper); float: right; margin: -4px 0 4px 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .q h3 { font-size: 16.5px; margin-bottom: 7px; }
+  .q p { margin: 0; font-size: 14px; color: var(--muted); }
+  .q .eg { display: block; margin-top: 8px; font-style: italic; font-size: 13px; color: var(--denim); }
+
+  .handover { margin-top: 26px; }
+  .handover ol { margin: 10px 0 0; padding-left: 22px; }
+  .handover li { margin: 8px 0; font-size: 14.5px; }
+  .handover li b { color: var(--copper); }
+
+  /* silhouettes */
+  .sils { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
+  .sil {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    padding: 12px 10px 12px; text-align: center;
+  }
+  .sil svg { width: 100%; max-width: 120px; height: auto; color: var(--ink); }
+  .sil b { display: block; font-size: 13.5px; margin-top: 4px; }
+  .sil span { font-size: 11.5px; color: var(--muted); }
+  @media (prefers-reduced-motion: no-preference) {
+    .sil { transition: border-color .15s ease, transform .15s ease; }
+    .sil:hover { border-color: var(--copper); transform: translateY(-2px); }
+  }
+
+  a { color: var(--denim); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+  .foot { margin-top: 40px; font-size: 13px; color: var(--muted); }
+  @media (prefers-reduced-motion: no-preference) {
+    .week { transition: border-color .15s ease; }
+    .week:hover { border-color: var(--copper); }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">3D-Fabric · Erika Purse Line · Detroit</div>
+    <h1>Erika's project portal</h1>
+    <p class="sub">The design pipeline is built and working — a sketch becomes a costed,
+    cut-ready pattern in seconds. This site is where the project stands, the ten-week plan,
+    and the brief for designing the first real purse.</p>
+    <span class="draftflag">Draft — pending Erika's review</span>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Portal sections">
+    <button class="tab" id="tab-status" role="tab" aria-selected="true" aria-controls="panel-status" data-panel="status">Where we are</button>
+    <button class="tab" id="tab-plan" role="tab" aria-selected="false" aria-controls="panel-plan" data-panel="plan">Ten-week plan</button>
+    <button class="tab" id="tab-brief" role="tab" aria-selected="false" aria-controls="panel-brief" data-panel="brief">First purse — the brief</button>
+  </nav>
+
+  <!-- ============ TAB: STATUS ============ -->
+  <div class="panel" id="panel-status" role="tabpanel" aria-labelledby="tab-status">
+
+    <section>
+      <h2>Where the project is today</h2>
+      <p class="lede">Every stage of the software pipeline works, end to end. A sketch or photo
+      becomes a costed, cut-ready pattern in about 17 seconds.</p>
+
+      <div class="pipe">
+        <span class="stage">Sketch / photo <small>image input</small></span><span class="tie">- - -</span>
+        <span class="stage">3D model <small>AI, ~10 s</small></span><span class="tie">- - -</span>
+        <span class="stage">Flat pattern <small>SVG, mm</small></span><span class="tie">- - -</span>
+        <span class="stage">Nested layout <small>54 in fabric</small></span><span class="tie">- - -</span>
+        <span class="stage">Cost takeoff <small>yardage + $</small></span><span class="tie">- - -</span>
+        <span class="stage">Tech pack <small>spec sheet</small></span>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>10</b><span>bags designed — Collection 01 “Ten for the D”</span></div>
+        <div class="stat"><b>17.4 s</b><span>photo → costed pattern, one command</span></div>
+        <div class="stat"><b>$3.82–7.05</b><span>draft material cost per bag (canvas)</span></div>
+        <div class="stat"><b>60 / 60</b><span>automated tests passing</span></div>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>What's done vs. what's still draft</h2>
+      <div class="twocol">
+        <div class="board good">
+          <h3>Working and verified</h3>
+          <ul>
+            <li>Full pipeline: photo or sketch in, pattern + nesting + cost + tech pack out</li>
+            <li>Collection 01: ten Detroit-themed bags rendered, patterned, and priced</li>
+            <li>Lookbook deck and a seamless turntable reel for all ten bags</li>
+            <li>Laser-cutter files (DXF) export for every pattern</li>
+            <li>Demo tote proves the chain with no AI needed (5.8 s)</li>
+          </ul>
+        </div>
+        <div class="board warn">
+          <h3>Caveats before anything is sewn</h3>
+          <ul>
+            <li>AI-generated patterns are drafts — seams need hand curation before they're sewable</li>
+            <li>Material prices are placeholders; no real vendor quotes yet</li>
+            <li>Collection art prints are placeholders pending the real Color Me Art files</li>
+            <li>Leather (per-hide) costing is an estimate; fabric-roll math is exact</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ TAB: PLAN ============ -->
+  <div class="panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
+
+    <section>
+      <h2>The ten-week plan</h2>
+      <p class="lede">Three tracks run side by side. Purses turn the software into physical
+      product. The book keeps its writing cadence and feeds the brand story. Grants aim
+      everything at the Motor City Match Round 33 deadline on October 1.</p>
+      <div class="legend">
+        <span class="chip purse">Purse business</span>
+        <span class="chip book">Book</span>
+        <span class="chip grant">Grants</span>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 01</span><span class="wk-dates">Jul 27 – Aug 2</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Erika answers the <a href="#brief">First-Purse brief</a> and picks the 3 hero bags from Collection 01</li>
+            <li>Hand-curate the seams on hero #1 into a real sewable pattern</li>
+            <li>Get a felt fit-check laser-cut quote (Ponoko) for hero #1</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Pin down the book's job for the business (brand story, craft guide, or memoir)</li>
+            <li>Set the writing cadence: 5 sessions this week, word target on the wall</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Build the grant docs folder: one-page business plan, budget, LLC/EIN docs, bio, product renders</li>
+            <li>Register on IFundWomen (universal application) and Hello Alice</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 02</span><span class="wk-dates">Aug 3 – 9</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Collect real quotes: canvas, lining, zippers, hardware, thread</li>
+            <li>Load real prices into the pipeline and re-run all ten cost sheets</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Drafting block — hold the 5-session cadence</li>
+            <li>Start photographing the purse-making process for the book</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Submit the August Amber Grant entry ($10k monthly, short essay, $15 fee)</li>
+            <li>Book a free consult with Michigan SBDC / TechTown Detroit</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 03</span><span class="wk-dates">Aug 10 – 16</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Assemble the felt fit-check; mark every correction on the pattern</li>
+            <li>Swap placeholder prints for real Color Me Art files</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Drafting block — hit the weekly word target</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>SBDC meeting: fit check for Motor City Match, ask what Detroit Means Business adds</li>
+            <li>List two more open applications with fall deadlines</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 04</span><span class="wk-dates">Aug 17 – 23</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Cut and sew prototype #1 in real fabric (pattern v2)</li>
+            <li>Write construction steps into the tech pack as you go</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Drafting block</li>
+            <li>Save one strong excerpt for launch marketing</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Draft the Motor City Match narrative: story, budget, what the money buys</li>
+            <li>Ask 2–3 people for letters of support</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 05</span><span class="wk-dates">Aug 24 – 30</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Wear-test prototype #1; fold fixes back into the pattern</li>
+            <li>Start prototype #2 (second hero silhouette)</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Midpoint review: read the draft so far, re-outline the back half</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Re-enter Amber Grant (September round)</li>
+            <li>Polish the pitch deck — reuse the Collection 01 lookbook</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 06</span><span class="wk-dates">Aug 31 – Sep 6</span><span class="wk-flag ok">Motor City Match Round 33 opens Sep 1</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Finish prototype #2</li>
+            <li>Product photos: real bags next to the polished renders</li>
+            <li>Pick the sales channel: market booth, Etsy, or own site</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Drafting block — back half underway</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Start the Motor City Match application the day it opens</li>
+            <li>Map every question to a doc already in the vault</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 07</span><span class="wk-dates">Sep 7 – 13</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Set retail prices: materials + labor + margin, sanity-check against comparable Detroit makers</li>
+            <li>Plan the first small batch (~10 units) and order materials</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Drafting block</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Motor City Match: financials and space/use-of-funds sections</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 08</span><span class="wk-dates">Sep 14 – 20</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Batch production, week one</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Finish the full draft; line up 3 beta readers</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Complete Motor City Match draft; send to SBDC advisor for review</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 09</span><span class="wk-dates">Sep 21 – 27</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Batch production, week two; packaging and labels</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Self-edit pass one; draft goes to beta readers</li>
+            <li>Decide the publishing path: query agents vs. self-publish</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li>Fold in SBDC feedback; collect the support letters; final read-through</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-head"><span class="wk-num">WK 10</span><span class="wk-dates">Sep 28 – Oct 4</span><span class="wk-flag">Motor City Match closes Oct 1 — submit by Sep 30</span></div>
+        <div class="tracks">
+          <div class="track purse"><h4>Purses</h4><ul>
+            <li>Soft launch: Eastern Market booth or online drop, tied to the collection story</li>
+            <li>Log what sells and what people say — that's next quarter's plan</li>
+          </ul></div>
+          <div class="track book"><h4>Book</h4><ul>
+            <li>Beta feedback in; write the fall editing plan</li>
+            <li>Publish the saved excerpt as launch-week marketing</li>
+          </ul></div>
+          <div class="track grant"><h4>Grants</h4><ul>
+            <li><b>Submit Motor City Match by Sep 30</b> — never on deadline day</li>
+            <li>Queue the next cycle: Hatch Detroit's next round, holiday grant rounds, October Amber entry</li>
+          </ul></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>How this feeds the business goals</h2>
+      <div class="goals">
+        <div class="goal"><h3>Prove the product</h3>
+          <p>Prototypes → small batch → a real launch with real customers by <b>week 10</b>.
+          Every purse-track task moves a bag from a render to something someone buys.</p></div>
+        <div class="goal"><h3>Fund it without debt</h3>
+          <p>Amber Grant monthly entries plus one serious swing at <b>Motor City Match
+          (grants average ~$50k)</b>. Grant money buys materials, equipment, and batch
+          capacity — not loan payments.</p></div>
+        <div class="goal"><h3>Build the audience</h3>
+          <p>The book and the bags tell one Detroit story. Process photos feed the book;
+          the book's excerpt feeds the launch; the launch feeds the grant narrative.</p></div>
+        <div class="goal"><h3>Keep the machine cheap</h3>
+          <p>The pipeline already turns a sketch into a costed pattern in <b>17 seconds</b>.
+          Every new design is nearly free to spec — spend the money on fabric and thread,
+          not drafting time.</p></div>
+      </div>
+      <p class="flywheel"><b>The flywheel:</b> the book builds the story → the story sells
+      purses and strengthens grant applications → grants fund production → production gives
+      the book its material. Each week's tasks push the same wheel.</p>
+    </section>
+  </div>
+
+  <!-- ============ TAB: BRIEF ============ -->
+  <div class="panel" id="panel-brief" role="tabpanel" aria-labelledby="tab-brief" hidden>
+
+    <section>
+      <h2>First purse — the design brief</h2>
+      <p class="lede">Erika: answer these ten in order — they move from the feeling to the
+      form. Short answers are perfect; a voice memo counts. Then one page of sketching.
+      The pipeline turns whatever you hand over into a 3D model, a pattern, and a cost
+      sheet the same day.</p>
+
+      <div class="qs">
+        <div class="q"><span class="qn">1</span><h3>How does she feel wearing it?</h3>
+          <p>Three words for the woman carrying this bag. This is the whole design in miniature — everything else has to earn those three words.</p>
+          <span class="eg">e.g. “unstoppable, playful, put-together” · “soft, easy, warm”</span></div>
+
+        <div class="q"><span class="qn">2</span><h3>Where is she when the bag is at its best?</h3>
+          <p>One scene. The place tells us formality, weather, and how hard the bag works.</p>
+          <span class="eg">e.g. Eastern Market on a Saturday · gallery opening · airport gate · first date</span></div>
+
+        <div class="q"><span class="qn">3</span><h3>What lives inside it?</h3>
+          <p>List everything it must swallow. This decides pockets and honesty about size.</p>
+          <span class="eg">e.g. phone, keys, lipstick, sunglasses · or: laptop, water bottle, a paperback</span></div>
+
+        <div class="q"><span class="qn">4</span><h3>How big, really?</h3>
+          <p>Compare it to a real object instead of inches — we'll take the measurements from there.</p>
+          <span class="eg">e.g. “a vinyl record” · “a hardcover book” · “a lunchbox” · “a magazine”</span></div>
+
+        <div class="q"><span class="qn">5</span><h3>How is it carried?</h3>
+          <p>Shoulder, crossbody, in the hand, under the arm — or convertible? Strap length changes the whole silhouette.</p>
+          <span class="eg">e.g. “crossbody, hands free at the market, but a short handle too”</span></div>
+
+        <div class="q"><span class="qn">6</span><h3>Does it hold its shape or slouch?</h3>
+          <p>Structured like a frame bag, soft like a hobo, or somewhere between? This picks the materials' backbone.</p>
+          <span class="eg">e.g. “stands up on the table by itself” · “melts against the hip”</span></div>
+
+        <div class="q"><span class="qn">7</span><h3>What's the color story?</h3>
+          <p>Three colors max: the body, the accent, the hardware. Name the one loud thing — every good bag has exactly one.</p>
+          <span class="eg">e.g. “cognac body, cream stitch, brass” · “black on black, one coral zipper”</span></div>
+
+        <div class="q"><span class="qn">8</span><h3>What does it feel like in the hand?</h3>
+          <p>Close your eyes and touch it. Crisp canvas, buttery leather, structured felt, waxed and rugged?</p>
+          <span class="eg">e.g. “smooth and cool like a saddle” · “sturdy canvas that softens with age”</span></div>
+
+        <div class="q"><span class="qn">9</span><h3>What story does it tell?</h3>
+          <p>The theme. Collection 01 is all Detroit — is this bag part of that story, or its own thing?</p>
+          <span class="eg">e.g. “the Riverwalk at dusk” · “grandma's Sunday best” · “first snow on Second Ave”</span></div>
+
+        <div class="q"><span class="qn">10</span><h3>What's the one detail people ask about?</h3>
+          <p>The thing a stranger notices and says “where did you get that?” One detail, done perfectly, beats five done okay.</p>
+          <span class="eg">e.g. a painted edge · an unexpected lining print · a hand-stamped rivet · the stitch color</span></div>
+      </div>
+
+      <div class="handover">
+        <h3>What to hand over (any format works)</h3>
+        <ol>
+          <li><b>Answers to the ten questions</b> — text, email, or a voice memo while you sketch.</li>
+          <li><b>One page of sketches</b> — front view and side view, pen on white paper. Wobbly lines are fine; proportions matter more than prettiness.</li>
+          <li><b>A photo of the sketch</b> with something for scale in frame (a coffee mug, your phone).</li>
+          <li><b>Anything that inspires it</b> — reference photos, a fabric swatch, a paint chip, a screenshot.</li>
+        </ol>
+        <p class="lede" style="margin-top:14px">From there: sketch → 3D model → flat pattern →
+        felt fit-check you can hold → real-fabric prototype. Weeks 1–4 of the plan.</p>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>Silhouette starters</h2>
+      <p class="lede">Don't start from a blank page — point at one of these, or mash two
+      together (“bucket body, saddle flap”). Each makes a very different bag from the same
+      ten answers.</p>
+
+      <div class="sils">
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Tote silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M26 35 L74 35 L69 80 L31 80 Z"/><path d="M38 35 C38 18 62 18 62 35"/></g></svg>
+          <b>Tote</b><span>the workhorse · market days</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Hobo silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 52 Q50 40 78 52 Q82 82 50 82 Q18 82 22 52 Z"/><path d="M30 49 C36 18 64 18 70 49"/></g></svg>
+          <b>Hobo</b><span>slouchy · easygoing</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Bucket bag silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M30 38 L70 38 L66 80 L34 80 Z"/><path d="M34 52 L66 52" stroke-dasharray="4 4"/><path d="M34 38 C40 16 60 16 66 38"/></g></svg>
+          <b>Bucket</b><span>playful · everyday</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Saddle crossbody silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M25 46 L75 46 L75 60 Q75 80 50 80 Q25 80 25 60 Z"/><path d="M25 46 Q50 60 75 46"/><path d="M32 45 C38 14 62 14 68 45"/></g></svg>
+          <b>Saddle</b><span>crossbody · hands-free</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Frame bag silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M28 80 L72 80 L72 56 Q72 38 50 38 Q28 38 28 56 Z"/><circle cx="50" cy="42" r="3"/><path d="M42 38 C42 26 58 26 58 38"/></g></svg>
+          <b>Frame</b><span>polished · vintage</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Clutch silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M20 46 L80 46 L80 76 L20 76 Z"/><path d="M20 46 L50 62 L80 46"/></g></svg>
+          <b>Clutch</b><span>evening · one loud thing</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Box bag silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M30 42 L70 42 L70 80 L30 80 Z"/><path d="M42 42 C42 27 58 27 58 42"/><path d="M30 55 L70 55" stroke-dasharray="4 4"/></g></svg>
+          <b>Box</b><span>structured · statement</span></div>
+
+        <div class="sil">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Half-moon silhouette"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 78 L78 78 A28 30 0 0 0 22 78 Z"/><path d="M36 56 C41 36 59 36 64 56"/></g></svg>
+          <b>Half-moon</b><span>soft · shoulder</span></div>
+      </div>
+    </section>
+  </div>
+
+  <hr class="seam">
+
+  <footer class="foot">
+    <p><b>Verify before relying on:</b> grant deadlines confirmed as of Jul 26, 2026 —
+    re-check at
+    <a href="https://www.motorcitymatch.com/">motorcitymatch.com</a>,
+    <a href="https://ambergrantsforwomen.com/">ambergrantsforwomen.com</a>,
+    <a href="https://www.ifundwomen.com/">ifundwomen.com</a>,
+    <a href="https://helloalice.com/">helloalice.com</a>,
+    <a href="https://hatchdetroit.com/">hatchdetroit.com</a>,
+    <a href="https://michigansbdc.org/">michigansbdc.org</a>.</p>
+    <p>The book track assumes a manuscript in progress — shift the drafting blocks to
+    match where the manuscript actually stands. Repo:
+    <a href="https://github.com/Tandem-Engineering-Group/3D-Fabric">Tandem-Engineering-Group/3D-Fabric</a>
+    (STATUS.md is the live board). Generated 2026-07-26 · autonomous run.</p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    function show(name) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-panel') === name;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        document.getElementById('panel-' + t.getAttribute('data-panel')).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var name = t.getAttribute('data-panel');
+        show(name);
+        if (history.replaceState) history.replaceState(null, '', '#' + name);
+      });
+    });
+    function fromHash() {
+      var h = location.hash.replace('#', '');
+      if (h === 'plan' || h === 'brief' || h === 'status') show(h);
+    }
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+  })();
+</script>
