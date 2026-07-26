@@ -54,33 +54,40 @@ def object_mode():
         pass
 
 
-def ensure_seams(obj, sharp_deg: float = 40.0):
-    """The addon errors on seamless meshes. Auto-seam strategy (pure bmesh, no
-    operator/context games): sharp edges + open boundary edges become seams —
-    covers welded hard-surface meshes AND meshes built from separate flat
-    panels (each panel then exports as its own piece). Smooth closed blobs
-    (e.g. AI-generated) fall back to Smart-UV-Project island borders."""
+def ensure_seams(obj, sharp_deg: float = 40.0, max_sharp_frac: float = 0.10):
+    """The addon errors on seamless meshes. Auto-seam strategy:
+
+    Boundary edges are always safe to mark (they are already pattern borders
+    and cut nothing). Interior sharp edges are only trusted if they are sparse
+    — on decimated marching-cubes meshes nearly every edge is "sharp", and
+    marking them dices the mesh into thousands of confetti pieces. So the
+    sharpness threshold escalates (40->60->75 deg) until the marked set is
+    under max_sharp_frac of all edges; failing that, coarse Smart-UV islands
+    (89 deg) provide a few large panels for smooth/noisy closed blobs."""
     import math
     me = obj.data
     if any(e.use_seam for e in me.edges):
         return "existing"
     bm = bmesh.new()
     bm.from_mesh(me)
-    marked = 0
-    for e in bm.edges:
-        lf = len(e.link_faces)
-        if lf == 1 or (lf == 2 and e.calc_face_angle(0.0) > math.radians(sharp_deg)):
-            e.seam = True
-            marked += 1
-    if marked:
-        bm.to_mesh(me)
-        me.update()
-        bm.free()
-        return f"auto-bmesh ({marked} sharp/boundary edges)"
+    boundary = [e for e in bm.edges if len(e.link_faces) == 1]
+    for deg in (sharp_deg, 60.0, 75.0):
+        sharp = [e for e in bm.edges if len(e.link_faces) == 2
+                 and e.calc_face_angle(0.0) > math.radians(deg)]
+        if len(sharp) <= max_sharp_frac * len(bm.edges):
+            if sharp or boundary:
+                for e in sharp + boundary:
+                    e.seam = True
+                bm.to_mesh(me)
+                me.update()
+                bm.free()
+                return (f"auto-bmesh ({len(sharp)} sharp @{deg:.0f}deg + "
+                        f"{len(boundary)} boundary)")
+            break  # closed smooth mesh: nothing sharp, no boundary
     bm.free()
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.select_all(action="SELECT")
-    bpy.ops.uv.smart_project(angle_limit=math.radians(66), island_margin=0.02)
+    bpy.ops.uv.smart_project(angle_limit=math.radians(89), island_margin=0.03)
     bpy.ops.uv.seams_from_islands()
     bpy.ops.object.mode_set(mode="OBJECT")
     n = sum(1 for e in me.edges if e.use_seam)

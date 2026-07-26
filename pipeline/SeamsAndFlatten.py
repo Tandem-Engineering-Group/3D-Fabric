@@ -176,6 +176,8 @@ def main() -> None:
                     choices=["ANGLE_BASED", "CONFORMAL", "KEEP"])
     ap.add_argument("--seams", help="seams.json: {object_name: [[v1,v2],...]}")
     ap.add_argument("--min-area-mm2", type=float, default=100.0)
+    ap.add_argument("--max-pieces", type=int, default=60,
+                    help="fail loudly if the mesh fragments into more pieces")
     ap.add_argument("--out-dir", help="default: patterns/<design>")
     args = ap.parse_args()
 
@@ -198,6 +200,12 @@ def main() -> None:
     if not polys:
         print("raw SVGs contained no usable pieces", file=sys.stderr)
         sys.exit(3)
+    if len(polys) > args.max_pieces:
+        print(f"{len(polys)} pieces parsed (max {args.max_pieces}) — the mesh "
+              f"fragmented. Provide --seams, raise --min-area-mm2, or simplify "
+              f"the mesh; a sewable garment has dozens of pieces, not hundreds.",
+              file=sys.stderr)
+        sys.exit(4)
 
     pieces = build_pieces(polys, args.allowance_mm)
     doc = common.pieces_doc(args.design, pieces, args.allowance_mm,
