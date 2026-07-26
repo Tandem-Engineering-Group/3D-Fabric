@@ -16,6 +16,7 @@ import traceback
 from pathlib import Path
 
 import addon_utils
+import bmesh
 import bpy
 
 
@@ -45,19 +46,45 @@ def mark_seams(obj, edge_pairs):
     return n
 
 
-def ensure_seams(obj):
-    """The addon errors on seamless meshes. Auto-seam fallback: Smart UV
-    Project islands -> island borders become seams. Works on any mesh."""
+def object_mode():
+    try:
+        if bpy.context.mode != "OBJECT":
+            bpy.ops.object.mode_set(mode="OBJECT")
+    except RuntimeError:
+        pass
+
+
+def ensure_seams(obj, sharp_deg: float = 40.0):
+    """The addon errors on seamless meshes. Auto-seam strategy (pure bmesh, no
+    operator/context games): sharp edges + open boundary edges become seams —
+    covers welded hard-surface meshes AND meshes built from separate flat
+    panels (each panel then exports as its own piece). Smooth closed blobs
+    (e.g. AI-generated) fall back to Smart-UV-Project island borders."""
     import math
-    if any(e.use_seam for e in obj.data.edges):
+    me = obj.data
+    if any(e.use_seam for e in me.edges):
         return "existing"
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    marked = 0
+    for e in bm.edges:
+        lf = len(e.link_faces)
+        if lf == 1 or (lf == 2 and e.calc_face_angle(0.0) > math.radians(sharp_deg)):
+            e.seam = True
+            marked += 1
+    if marked:
+        bm.to_mesh(me)
+        me.update()
+        bm.free()
+        return f"auto-bmesh ({marked} sharp/boundary edges)"
+    bm.free()
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.select_all(action="SELECT")
     bpy.ops.uv.smart_project(angle_limit=math.radians(66), island_margin=0.02)
     bpy.ops.uv.seams_from_islands()
     bpy.ops.object.mode_set(mode="OBJECT")
-    n = sum(1 for e in obj.data.edges if e.use_seam)
-    return f"auto ({n} edges)"
+    n = sum(1 for e in me.edges if e.use_seam)
+    return f"auto-islands ({n} edges)"
 
 
 def main():
@@ -83,6 +110,7 @@ def main():
 
     for i, obj in enumerate(meshes, start=1):
         try:
+            object_mode()  # a failed op can strand us in EDIT mode
             bpy.ops.object.select_all(action="DESELECT")
             obj.select_set(True)
             bpy.context.view_layer.objects.active = obj
@@ -117,6 +145,7 @@ def main():
         except Exception:
             report["errors"].append(f"{obj.name}:\n{traceback.format_exc()}")
             log(f"{obj.name}: FAILED")
+            object_mode()
 
     Path(job["report"]).write_text(json.dumps(report, indent=2), encoding="utf-8")
     log("report:", json.dumps({k: v for k, v in report.items() if k != 'errors'}),

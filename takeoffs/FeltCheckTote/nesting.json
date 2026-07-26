@@ -1,0 +1,63 @@
+{
+  "schema": "3dfabric.nesting/1",
+  "design": "FeltCheckTote",
+  "sheet_width_in": 54.0,
+  "gap_mm": 5.0,
+  "used_length_mm": 570.0,
+  "used_length_in": 22.44,
+  "used_length_yd": 0.623,
+  "utilization": 0.58197572,
+  "total_piece_area_mm2": 454995.6,
+  "draft": "DRAFT \u2014 unverified nesting layout, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "placements": [
+    {
+      "piece_id": "piece-1",
+      "copy": 1,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-2",
+      "copy": 1,
+      "x_mm": 345.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-3",
+      "copy": 1,
+      "x_mm": 690.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-4",
+      "copy": 1,
+      "x_mm": 835.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-5",
+      "copy": 1,
+      "x_mm": 980.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-7",
+      "copy": 1,
+      "x_mm": 1125.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-6",
+      "copy": 1,
+      "x_mm": 1180.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    }
+  ]
+}
