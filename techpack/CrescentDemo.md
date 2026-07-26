@@ -23,7 +23,7 @@
 - **tris_before**: 244
 - **tris_after**: 244
 - **non_manifold_edges**: 96
-- **dims_m**: [1.100000023841858, 0.13050000369548798, 0.2648639976978302]
+- **dims_m**: [1.100000023841858, 0.3554999902844429, 0.21304799988865852]
 - **draft**: DRAFT — unverified mesh stats, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal.
 
 ## Pattern pieces
@@ -35,14 +35,14 @@
 | C | piece-3 | 1 | 310 × 155 | 402.2 |
 | D | piece-4 | 1 | 302 × 95 | 284.8 |
 | E | piece-5 | 1 | 38 × 1120 | 424.7 |
-| F | piece-6 | 1 | 40 × 291 | 115.4 |
+| F | piece-6 | 1 | 40 × 176 | 69.7 |
 
 ## Materials & takeoff
 
 | Field | Value |
 | --- | --- |
 | Material | Cotton canvas 12oz (`canvas`) |
-| Nested utilization | 13.5% |
+| Nested utilization | 13.2% |
 | Linear yd per unit | 1.347 yd |
 | Material cost per unit | $24.25 |
 | Waste factor | 10% |
