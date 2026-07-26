@@ -25,6 +25,7 @@ Legend: 🟢 GREEN (works, verified) · 🟡 AMBER (works, caveats) · 🔴 RED 
 | T08 | run_pipeline.py + README | 🟢 GREEN | One command, both input modes; 60 pytest green |
 | + | pipeline/ExportDXF.py (AutoCAD/laser cut paths) | 🟢 GREEN | Layered DXF, mm units; 2 tests |
 | + | pipeline/PhotoPolish.py (Nano Banana finishing) | 🟢 GREEN | Gemini 2.5 Flash Image; key from env (never committed); color-drift caveat noted |
+| + | Collection 01 "Ten for the D" | 🟢 GREEN | 10 concepts (designs/collection01.json): rendered, polished 10/10, patterned + priced ($3.82–$7.05 draft canvas), lookbook + seamless reel. Prints are placeholders pending real Color Me Art files |
 | T09 | Close-out | 🟢 GREEN | See RUN-REPORT.md |
 
 ## Test suite
