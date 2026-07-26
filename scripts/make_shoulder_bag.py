@@ -403,4 +403,5 @@ def main():
     print("[crescent] done")
 
 
-main()
+if __name__ == "__main__":
+    main()

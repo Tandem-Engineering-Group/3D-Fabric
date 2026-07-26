@@ -1,0 +1,119 @@
+{
+  "collection": "Collection 01 — Ten for the D",
+  "note": "Original silhouette studies. All prints are labeled placeholders until real Color Me Art files land in designs/artwork/. All prices DRAFT.",
+  "concepts": [
+    {
+      "slug": "the-313",
+      "name": "The 313",
+      "w": 290, "h": 170, "d": 75, "strap": 20,
+      "body": [0.085, 0.042, 0.024], "trim": [0.014, 0.012, 0.011],
+      "hw": "gold", "grain": 550, "art": null, "cam": 1.0,
+      "changes": "The flagship: espresso pebble body, black trim, gold chain.",
+      "why": "Every line needs a north star. This is the everyday one — the bag that goes to work, to dinner, to the airport.",
+      "speaks": "The area code you carry. Detroit luxury that doesn't ask permission.",
+      "mood": "warm premium editorial, everyday luxury"
+    },
+    {
+      "slug": "midnight-on-woodward",
+      "name": "Midnight on Woodward",
+      "w": 270, "h": 185, "d": 65, "strap": 16,
+      "body": [0.02, 0.018, 0.017], "trim": [0.014, 0.012, 0.011],
+      "hw": "silver", "grain": 700, "art": null, "cam": 1.0,
+      "changes": "Taller, slimmer, noir-on-noir with silver chain and a thinner strap.",
+      "why": "Every collection needs its after-dark piece. Slimming the profile and cooling the hardware turns the same crescent formal.",
+      "speaks": "Date night downtown. Streetlights on the avenue. The one that goes with everything because it argues with nothing.",
+      "mood": "moody after-dark editorial, cool light, black-on-black tonality"
+    },
+    {
+      "slug": "cognac-hour",
+      "name": "Cognac Hour",
+      "w": 320, "h": 150, "d": 80, "strap": 24,
+      "body": [0.32, 0.15, 0.06], "trim": [0.06, 0.03, 0.02],
+      "hw": "gold", "grain": 450, "art": null, "cam": 1.05,
+      "changes": "Wider and low-slung, cognac body over chocolate trim, wider strap, softer grain.",
+      "why": "Stretching the crescent horizontal makes it lounge instead of stand — the silhouette itself relaxes.",
+      "speaks": "Golden hour, brass instruments, velvet booths. Vintage soul glamour, poured slow.",
+      "mood": "golden-hour glow, jazz lounge warmth, amber tones"
+    },
+    {
+      "slug": "belle-isle",
+      "name": "Belle Isle",
+      "w": 250, "h": 160, "d": 70, "strap": 18,
+      "body": [0.02, 0.12, 0.06], "trim": [0.72, 0.65, 0.55],
+      "hw": "gold", "grain": 600, "art": null, "cam": 0.95,
+      "changes": "Compact body, deep emerald over cream trim — the first two-tone flip.",
+      "why": "Pairing a jewel green with cream trim reads garden party, not office. Smaller scale makes it a companion, not cargo.",
+      "speaks": "Sunday on the island. The conservatory's green glass. A picnic that dresses up.",
+      "mood": "fresh daylight, botanical garden airiness, jewel green"
+    },
+    {
+      "slug": "spirit",
+      "name": "Spirit",
+      "w": 280, "h": 190, "d": 70, "strap": 20,
+      "body": [0.055, 0.135, 0.10], "trim": [0.05, 0.05, 0.05],
+      "hw": "gold", "grain": 500, "art": null, "cam": 1.0,
+      "changes": "Tall proud profile in verdigris patina green with antique gold.",
+      "why": "The tall build carries the color like a monument carries weather. Patina green only works at scale — so we gave it scale.",
+      "speaks": "The statue downtown holding the sun in one hand and the people in the other. Monumental optimism you can wear.",
+      "mood": "monumental, bronze-patina, civic pride, warm stone light"
+    },
+    {
+      "slug": "eastern-market-saturday",
+      "name": "Eastern Market Saturday",
+      "w": 330, "h": 180, "d": 90, "strap": 26,
+      "body": [0.72, 0.66, 0.56], "trim": [0.18, 0.09, 0.04],
+      "hw": "gold", "grain": 400, "art": "designs/artwork/print_market.png",
+      "cam": 1.1,
+      "changes": "The big one — roomy market-day scale, cream canvas body wearing a produce-and-flowers print, tan trim.",
+      "why": "Flower Day demands room. The print carries the color so the body can be calm cream underneath it.",
+      "speaks": "Shed 2 on a Saturday morning: tomatoes, marigolds, murals. Art you can carry groceries past.",
+      "mood": "sunny market morning, fresh produce palette, mural energy"
+    },
+    {
+      "slug": "riverwalk-blues",
+      "name": "Riverwalk Blues",
+      "w": 290, "h": 170, "d": 75, "strap": 20,
+      "body": [0.03, 0.06, 0.14], "trim": [0.02, 0.03, 0.08],
+      "hw": "silver", "grain": 650, "art": "designs/artwork/print_river.png",
+      "cam": 1.0,
+      "changes": "Standard body gone deep navy, wave-form blues print, navy trim, silver chain.",
+      "why": "One print concept should move instead of bloom — waves and waveforms in the same gesture, because this city gave the world its pulse.",
+      "speaks": "The river at dusk. Techno's heartbeat. Motion in blue.",
+      "mood": "dusk riverside, electric blue accents, rhythmic and cool"
+    },
+    {
+      "slug": "grandmas-sunday-best",
+      "name": "Grandma's Sunday Best",
+      "w": 240, "h": 150, "d": 60, "strap": 14,
+      "body": [0.78, 0.72, 0.62], "trim": [0.25, 0.05, 0.09],
+      "hw": "gold", "grain": 700, "art": null, "cam": 0.9,
+      "changes": "The petite one: cream body, deep berry trim, delicate strap, small gold chain.",
+      "why": "Shrinking every dimension at once changes the bag's posture — it sits upright, formal, held not slung.",
+      "speaks": "The matriarchs. White gloves, pressed collars, a pew saved for you. Dignity as fashion, passed down.",
+      "mood": "soft morning light, heirloom elegance, cream and berry"
+    },
+    {
+      "slug": "the-muralist",
+      "name": "The Muralist",
+      "w": 300, "h": 175, "d": 75, "strap": 22,
+      "body": [0.05, 0.05, 0.06], "trim": [0.014, 0.012, 0.011],
+      "hw": "graphite", "grain": 500, "art": "designs/artwork/print_mural.png",
+      "cam": 1.0,
+      "changes": "Charcoal body as the wall; a full-bleed bold print as the mural; blacked-out hardware so nothing competes.",
+      "why": "This is Erika artist-first. Everything else on the bag steps back so the artwork is the entire statement.",
+      "speaks": "Color Me Art at architectural scale. The bag as her canvas — every drop a new wall.",
+      "mood": "gallery lighting, bold contemporary art, charcoal backdrop"
+    },
+    {
+      "slug": "first-snow-on-second-ave",
+      "name": "First Snow on Second Ave",
+      "w": 300, "h": 175, "d": 95, "strap": 22,
+      "body": [0.82, 0.80, 0.76], "trim": [0.55, 0.56, 0.58],
+      "hw": "silver", "grain": 350, "art": null, "cam": 1.05,
+      "changes": "Plush deep body in winter white with ice-gray trim and silver — the softest grain in the line.",
+      "why": "A white bag in a northern city is a flex. The deeper gusset and soft grain make it read plush, like fresh snowfall.",
+      "speaks": "The first quiet snow, before the plows. Detroit winters worn proudly, not endured.",
+      "mood": "winter morning softness, high-key light, quiet luxury"
+    }
+  ]
+}

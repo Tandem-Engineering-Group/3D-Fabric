@@ -1,0 +1,56 @@
+{
+  "schema": "3dfabric.nesting/1",
+  "design": "eastern-market-saturday",
+  "sheet_width_in": 54.0,
+  "gap_mm": 5.0,
+  "used_length_mm": 1120.0,
+  "used_length_in": 44.09,
+  "used_length_yd": 1.225,
+  "utilization": 0.16022533,
+  "total_piece_area_mm2": 246136.7,
+  "draft": "DRAFT \u2014 unverified nesting layout, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "placements": [
+    {
+      "piece_id": "piece-1",
+      "copy": 1,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-5",
+      "copy": 1,
+      "x_mm": 114.601,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-2",
+      "copy": 1,
+      "x_mm": 163.002,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-3",
+      "copy": 1,
+      "x_mm": 517.602,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-4",
+      "copy": 1,
+      "x_mm": 872.189,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-6",
+      "copy": 1,
+      "x_mm": 1217.979,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    }
+  ]
+}

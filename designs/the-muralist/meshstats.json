@@ -1,0 +1,17 @@
+{
+  "schema": "3dfabric.meshstats/1",
+  "source": "C:\\23 Erika Purse Buisness\\designs\\collection\\the-muralist.glb",
+  "output": "C:\\23 Erika Purse Buisness\\designs\\the-muralist\\the-muralist_prepped.glb",
+  "objects": 3,
+  "verts_before": 376,
+  "verts_after": 174,
+  "tris_before": 244,
+  "tris_after": 244,
+  "non_manifold_edges": 96,
+  "dims_m": [
+    1.100000023841858,
+    0.3572999909520149,
+    0.216520007699728
+  ],
+  "draft": "DRAFT \u2014 unverified mesh stats, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal."
+}

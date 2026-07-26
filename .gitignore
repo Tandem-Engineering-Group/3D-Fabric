@@ -27,6 +27,9 @@ venv/
 # Local-only business documents — public repo carries no personal data
 *.pdf
 
+# render intermediates (mp4 ships, raw frames don't — 240 PNGs ≈ 150MB)
+designs/renders/turntable_frames/
+
 # node (deck tooling only)
 node_modules/
 package.json

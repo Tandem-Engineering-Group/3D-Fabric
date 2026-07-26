@@ -1,0 +1,18 @@
+{
+  "schema": "3dfabric.takeoff/1",
+  "design": "the-313",
+  "material": "canvas",
+  "material_display": "Cotton canvas 12oz",
+  "unit": "yard",
+  "qty": 1,
+  "sheet_width_in": 54.0,
+  "utilization": 0.13174963,
+  "waste_factor": 0.1,
+  "linear_yd_per_unit": 1.3472,
+  "material_cost_per_unit_usd": 24.25,
+  "assumptions": [
+    "Prices in the material price book are DRAFT placeholders until verified against vendor quotes.",
+    "Waste factor 10% applied on top of the nested layout."
+  ],
+  "draft": "DRAFT \u2014 unverified takeoff, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal."
+}
