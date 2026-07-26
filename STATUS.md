@@ -1,28 +1,32 @@
 # STATUS — 3D-Fabric autonomous run
 
-**Run started:** 2026-07-26 · Windows 11 · RTX 4080 SUPER 16GB · legend: 🟢 GREEN · 🟡 AMBER · 🔴 RED · 🔵 RUNNING · ⚪ PENDING
+**Run:** 2026-07-26 · Windows 11 · Threadripper · RTX 4080 SUPER 16GB
+Legend: 🟢 GREEN (works, verified) · 🟡 AMBER (works, caveats) · 🔴 RED (blocked) · 🔵 RUNNING
 
 | Task | Component | Status | Notes |
 |------|-----------|--------|-------|
-| T00 | Repo init, layout, remote, first push | 🟢 GREEN | Pushed to Tandem-Engineering-Group/3D-Fabric |
-| T01 | Weight downloads (TripoSR ✅ → TRELLIS.2-4B → Hunyuan3D-2.1) | 🔵 RUNNING | TripoSR complete; TRELLIS.2 streaming. `logs/dl-weights.log` |
-| T01 | Vendor clones (seams-to-sewing, blender-mcp, ComfyUI, deepnest-next, TripoSR) | 🟢 GREEN | `logs/clone-vendor.log` |
-| T01 | AI runtime venv (.venv-ai, torch cu126) | 🔵 RUNNING | `logs/ai-env-setup.log` |
-| T02 | Blender 4.5 LTS, Inkscape, 7zip, uv | 🟢 GREEN | Blender 5.1 was already present; both work. Python 3.13/3.12 + git + gh preinstalled |
-| T03 | Blender add-ons installed headless | 🟢 GREEN | Enabled in Blender 4.5 AND 5.1, with headless `context.area` shim |
-| T04 | Nesting engine | 🟢 GREEN | shapely bottom-left-fill; 60-piece stress: 3.3s, 78.6% utilization, 0 overlaps |
-| T05 | pipeline/MeshPrep.py | 🟢 GREEN | E2E verified under Blender 5.1 |
-| T05 | pipeline/SeamsAndFlatten.py | 🟢 GREEN | auto-seams: sharp+boundary bmesh, island fallback for smooth blobs |
-| T05 | pipeline/Nesting.py | 🟢 GREEN | 8 tests |
-| T05 | pipeline/Takeoff.py | 🟢 GREEN | yard goods exact; hide math approximation (flagged) |
-| T05 | pipeline/TechPack.py | 🟢 GREEN | DRAFT-stamped md |
-| T05 | pipeline/Img2Mesh.py | 🟡 AMBER | Code+tests green; real inference pending T07 (torchmcubes risk on Windows) |
-| T06 | End-to-end demo: FeltCheck Tote | 🟢 GREEN | 7 pieces, 22.44 in of 54 in @ 58.2% util, 0.69 yd → $12.34/unit, 5.8s total |
-| T07 | AI leg: image → mesh → pattern | ⚪ PENDING | Needs T01 weights |
-| T08 | run_pipeline.py one-command entry | ⚪ PENDING | |
-| T09 | Close-out report | ⚪ PENDING | |
+| T00 | Repo init, layout, remote, first push | 🟢 GREEN | github.com/Tandem-Engineering-Group/3D-Fabric |
+| T01 | Weights: TripoSR 1.7GB, TRELLIS.2-4B 16.2GB, Hunyuan3D-2.1 14.9GB | 🟢 GREEN | All downloaded, all ungated (no HF token needed). `logs/dl-weights.log` |
+| T01 | Vendor clones (seams-to-sewing, blender-mcp, ComfyUI, deepnest-next, TripoSR) | 🟢 GREEN | ComfyUI deps deferred — not on critical path |
+| T01 | AI venv (.venv-ai): torch 2.13 cu126, CUDA verified | 🟢 GREEN | transformers pinned 4.40.2 (see RUN-REPORT) |
+| T02 | Blender | 🟢 GREEN | 4.5.10 LTS installed; 5.1.2 was already present — pipeline uses 5.1, addon verified on both |
+| T02 | Inkscape, 7zip, uv | 🔵 RUNNING | winget job still installing at close; not on critical path. `logs/install-apps.log` |
+| T03 | Add-ons headless (seams_to_sewing_pattern, blender_mcp) | 🟢 GREEN | Installed+enabled in 4.5 and 5.1; headless `context.area` shim applied at zip time |
+| T04 | Nesting engine | 🟢 GREEN | shapely bottom-left-fill; 60-piece stress 3.3s, 78.6% util, 0 overlaps. deepnest-next kept in vendor/ as manual QA tool (🟡 vs Deepnest quality) |
+| T05 | pipeline/MeshPrep.py | 🟢 GREEN | Blender-headless cleanup/decimate + meshstats.json |
+| T05 | pipeline/SeamsAndFlatten.py | 🟢 GREEN | weld+deflake on import; auto-seams: sharp-edge escalation by piece count, boundary always, 89° islands fallback; --max-pieces guard |
+| T05 | pipeline/Nesting.py | 🟢 GREEN | pieces.json or SVG in; nested SVG + nesting.json out |
+| T05 | pipeline/Takeoff.py | 🟢 GREEN | Yard goods exact; hide math approximation (flagged in output) |
+| T05 | pipeline/TechPack.py | 🟢 GREEN | DRAFT-stamped md: overview, piece table, BOM stub, construction stub |
+| T05 | pipeline/Img2Mesh.py | 🟢 GREEN | TripoSR backend working end-to-end |
+| T06 | FeltCheck Tote demo (proof artifact) | 🟢 GREEN | 7 pieces, 22.44 in @ 58.2% util, 0.69 yd → $12.34/unit, **5.8 s** mesh→tech pack |
+| T07 | AI leg: image → mesh → pattern | 🟢 GREEN | TripoSR: 27 s cold / ~10 s warm, ~5.3 GB VRAM; full image→tech pack 17.4 s; 22 pieces @ 60.7% util, 0.94 yd → $16.90/unit draft |
+| T07 | TRELLIS.2 / Hunyuan3D Windows runtimes | 🟡 AMBER | Weights present; runtimes need compiled CUDA exts and no MSVC linker on box — TripoSR is the working leg |
+| T08 | run_pipeline.py + README | 🟢 GREEN | One command, both input modes; 60 pytest green |
+| T09 | Close-out | 🟢 GREEN | See RUN-REPORT.md |
 
-## Machine facts (verified)
-- winget 1.29, git 2.54, Python 3.13.12 + 3.12, gh 2.94 (authenticated)
-- No HF token in env — not needed, all target models ungated as of 2026-07
-- Disk free ~1.6TB · VRAM free ~11GB at run start
+## Test suite
+`pytest tests/ -q` → **60 passed** (Blender-dependent tests run for real on this box; they skip cleanly where Blender/addon is absent).
+
+## Machine facts
+winget 1.29 · git 2.54 · Python 3.13.12 + 3.12 · gh 2.94 (authed) · Blender 4.5.10 + 5.1.2 · disk free ~1.5 TB

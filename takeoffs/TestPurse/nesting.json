@@ -1,0 +1,168 @@
+{
+  "schema": "3dfabric.nesting/1",
+  "design": "TestPurse",
+  "sheet_width_in": 54.0,
+  "gap_mm": 5.0,
+  "used_length_mm": 780.18,
+  "used_length_in": 30.72,
+  "used_length_yd": 0.853,
+  "utilization": 0.60651176,
+  "total_piece_area_mm2": 649021.8,
+  "draft": "DRAFT \u2014 unverified nesting layout, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "placements": [
+    {
+      "piece_id": "piece-1",
+      "copy": 1,
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-2",
+      "copy": 1,
+      "x_mm": 692.669,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-3",
+      "copy": 1,
+      "x_mm": 1011.897,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-4",
+      "copy": 1,
+      "x_mm": 1165.672,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-5",
+      "copy": 1,
+      "x_mm": 82.195,
+      "y_mm": 757.16,
+      "rotation_deg": 180.0
+    },
+    {
+      "piece_id": "piece-6",
+      "copy": 1,
+      "x_mm": 1294.49,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-13",
+      "copy": 1,
+      "x_mm": 0.0,
+      "y_mm": 230.482,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-8",
+      "copy": 1,
+      "x_mm": 1207.302,
+      "y_mm": 0.0,
+      "rotation_deg": 90.0
+    },
+    {
+      "piece_id": "piece-7",
+      "copy": 1,
+      "x_mm": 692.669,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-10",
+      "copy": 1,
+      "x_mm": 1011.897,
+      "y_mm": 230.482,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-9",
+      "copy": 1,
+      "x_mm": 1343.764,
+      "y_mm": 230.482,
+      "rotation_deg": 90.0
+    },
+    {
+      "piece_id": "piece-11",
+      "copy": 1,
+      "x_mm": 74.504,
+      "y_mm": 320.751,
+      "rotation_deg": 90.0
+    },
+    {
+      "piece_id": "piece-12",
+      "copy": 1,
+      "x_mm": 1335.625,
+      "y_mm": 320.751,
+      "rotation_deg": 90.0
+    },
+    {
+      "piece_id": "piece-18",
+      "copy": 1,
+      "x_mm": 1011.897,
+      "y_mm": 354.251,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-16",
+      "copy": 1,
+      "x_mm": 79.504,
+      "y_mm": 354.251,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-20",
+      "copy": 1,
+      "x_mm": 1212.302,
+      "y_mm": 0.0,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-17",
+      "copy": 1,
+      "x_mm": 1165.672,
+      "y_mm": 407.395,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-15",
+      "copy": 1,
+      "x_mm": 40.732,
+      "y_mm": 220.636,
+      "rotation_deg": 180.0
+    },
+    {
+      "piece_id": "piece-21",
+      "copy": 1,
+      "x_mm": 1366.235,
+      "y_mm": 81.142,
+      "rotation_deg": 180.0
+    },
+    {
+      "piece_id": "piece-22",
+      "copy": 1,
+      "x_mm": 1340.625,
+      "y_mm": 86.142,
+      "rotation_deg": 0.0
+    },
+    {
+      "piece_id": "piece-14",
+      "copy": 1,
+      "x_mm": 1313.192,
+      "y_mm": 453.124,
+      "rotation_deg": 180.0
+    },
+    {
+      "piece_id": "piece-19",
+      "copy": 1,
+      "x_mm": 1300.38,
+      "y_mm": 219.091,
+      "rotation_deg": 180.0
+    }
+  ]
+}

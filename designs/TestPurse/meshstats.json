@@ -1,0 +1,17 @@
+{
+  "schema": "3dfabric.meshstats/1",
+  "source": "C:\\23 Erika Purse Buisness\\designs\\TestPurse\\TestPurse_ai.glb",
+  "output": "C:\\23 Erika Purse Buisness\\designs\\TestPurse\\TestPurse_prepped.glb",
+  "objects": 1,
+  "verts_before": 69788,
+  "verts_after": 3300,
+  "tris_before": 139564,
+  "tris_after": 6588,
+  "non_manifold_edges": 0,
+  "dims_m": [
+    0.9206208288669586,
+    1.0994945168495178,
+    1.080935537815094
+  ],
+  "draft": "DRAFT \u2014 unverified mesh stats, generated 2026-07-26 by 3D-Fabric pipeline. AI drafts, engineers seal."
+}

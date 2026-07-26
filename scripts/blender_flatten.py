@@ -54,16 +54,77 @@ def object_mode():
         pass
 
 
-def ensure_seams(obj, sharp_deg: float = 40.0, max_sharp_frac: float = 0.10):
+def weld_and_deflake(obj, weld_dist: float = 1e-5, min_area_frac: float = 0.002):
+    """glTF splits vertices wherever normals differ, so imported meshes arrive
+    as disconnected per-shading-island patches (an AI blob came in as 6.5k
+    fragments). Weld position-coincident verts so real topology is visible to
+    the seam logic, and drop tiny floater shells (marching-cubes noise)."""
+    me = obj.data
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    before = len(bm.verts)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts[:], dist=weld_dist)
+
+    seen, shells = set(), []
+    for f in bm.faces:
+        if f.index in seen:
+            continue
+        stack, shell = [f], []
+        while stack:
+            cur = stack.pop()
+            if cur.index in seen:
+                continue
+            seen.add(cur.index)
+            shell.append(cur)
+            for e in cur.edges:
+                stack.extend(lf for lf in e.link_faces if lf.index not in seen)
+        shells.append(shell)
+    total_area = sum(f.calc_area() for f in bm.faces) or 1.0
+    doomed = [f for shell in shells
+              if sum(f.calc_area() for f in shell) < min_area_frac * total_area
+              for f in shell]
+    if doomed and len(doomed) < len(bm.faces):
+        bmesh.ops.delete(bm, geom=doomed, context="FACES")
+    bm.to_mesh(me)
+    me.update()
+    bm.free()
+    return (f"welded {before}->{len(me.vertices)} verts, "
+            f"{len(shells)} shell(s), dropped {len(doomed)} floater faces")
+
+
+def _pieces_if_cut(bm, seam_edges) -> int:
+    """How many pieces the exporter would produce: connected face components
+    treating seam edges (and boundaries) as cuts."""
+    cut = set(seam_edges)
+    seen = set()
+    comps = 0
+    for f in bm.faces:
+        if f.index in seen:
+            continue
+        comps += 1
+        stack = [f]
+        while stack:
+            cur = stack.pop()
+            if cur.index in seen:
+                continue
+            seen.add(cur.index)
+            for e in cur.edges:
+                if e in cut or len(e.link_faces) != 2:
+                    continue
+                stack.extend(lf for lf in e.link_faces if lf.index not in seen)
+    return comps
+
+
+def ensure_seams(obj, sharp_deg: float = 40.0, max_pieces: int = 24):
     """The addon errors on seamless meshes. Auto-seam strategy:
 
     Boundary edges are always safe to mark (they are already pattern borders
-    and cut nothing). Interior sharp edges are only trusted if they are sparse
-    — on decimated marching-cubes meshes nearly every edge is "sharp", and
-    marking them dices the mesh into thousands of confetti pieces. So the
-    sharpness threshold escalates (40->60->75 deg) until the marked set is
-    under max_sharp_frac of all edges; failing that, coarse Smart-UV islands
-    (89 deg) provide a few large panels for smooth/noisy closed blobs."""
+    and cut nothing). Interior sharp edges become seams at the lowest
+    sharpness threshold (40->60->75 deg) whose resulting PIECE COUNT stays
+    sewable (<= max_pieces) — on decimated marching-cubes meshes nearly every
+    edge reads as "sharp" and lower thresholds dice the mesh into confetti.
+    Failing all thresholds, coarse Smart-UV islands (89 deg) provide a few
+    large panels for smooth/noisy closed blobs."""
     import math
     me = obj.data
     if any(e.use_seam for e in me.edges):
@@ -74,16 +135,17 @@ def ensure_seams(obj, sharp_deg: float = 40.0, max_sharp_frac: float = 0.10):
     for deg in (sharp_deg, 60.0, 75.0):
         sharp = [e for e in bm.edges if len(e.link_faces) == 2
                  and e.calc_face_angle(0.0) > math.radians(deg)]
-        if len(sharp) <= max_sharp_frac * len(bm.edges):
-            if sharp or boundary:
-                for e in sharp + boundary:
-                    e.seam = True
-                bm.to_mesh(me)
-                me.update()
-                bm.free()
-                return (f"auto-bmesh ({len(sharp)} sharp @{deg:.0f}deg + "
-                        f"{len(boundary)} boundary)")
-            break  # closed smooth mesh: nothing sharp, no boundary
+        if not sharp and not boundary:
+            break  # closed smooth mesh: nothing to mark at any threshold
+        n_pieces = _pieces_if_cut(bm, sharp)
+        if n_pieces <= max_pieces:
+            for e in sharp + boundary:
+                e.seam = True
+            bm.to_mesh(me)
+            me.update()
+            bm.free()
+            return (f"auto-bmesh ({len(sharp)} sharp @{deg:.0f}deg + "
+                    f"{len(boundary)} boundary -> {n_pieces} pieces)")
     bm.free()
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.select_all(action="SELECT")
@@ -122,6 +184,7 @@ def main():
             obj.select_set(True)
             bpy.context.view_layer.objects.active = obj
             bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+            log(f"{obj.name}: {weld_and_deflake(obj)}")
             if obj.name in seams:
                 log(f"{obj.name}: marked {mark_seams(obj, seams[obj.name])} seam edges")
             log(f"{obj.name}: seams = {ensure_seams(obj)}")
