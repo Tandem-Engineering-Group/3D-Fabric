@@ -32,6 +32,9 @@ def parse_args():
     ap.add_argument("--samples", type=int, default=40)
     ap.add_argument("--res-x", type=int, default=1024)
     ap.add_argument("--res-y", type=int, default=840)
+    ap.add_argument("--move", choices=["cycle", "orbit"], default="cycle",
+                    help="cycle: orbit/dolly/crane per segment; orbit: one "
+                         "seamless 360-degree circle across all segments")
     return ap.parse_args(argv)
 
 
@@ -59,12 +62,15 @@ def build_concept_scene(c, samples):
     return ns
 
 
-def rig_camera_move(c, move, frames):
+def rig_camera_move(c, move, frames, seg_index=0, seg_count=1):
     """Replace the static camera pose with an animated one, always tracking
-    the bag. Moves: 0 orbit sweep, 1 dolly-in from low, 2 crane-down."""
+    the bag. Moves 0-2: orbit sweep / dolly-in / crane-down. Move "orbit-slice"
+    (via seg_count>1 and move==3): this segment covers its share of one
+    continuous 360-degree circle at FIXED radius and height, so concatenated
+    segments play as a single seamless orbit while the bag changes."""
     scene = bpy.context.scene
     cam = scene.camera
-    f = float(c.get("cam", 1.0))
+    f = float(c.get("cam", 1.0)) if move != 3 else 1.05
     base = tuple(v * f for v in (0.46, -0.60, 0.18))
 
     target = bpy.data.objects.new("CamTarget", None)
@@ -96,13 +102,38 @@ def rig_camera_move(c, move, frames):
         key((base[0], base[1], base[2] * 0.95), frames)
 
 
+def rig_bag_spin(seg_index, seg_count, frames):
+    """Turntable, done right for a one-sided studio sweep: the BAG rotates,
+    camera and backdrop stay put — a camera orbit would stare at the back of
+    the cyclorama for half the circle. Segment i covers its slice of one full
+    revolution; the end key sits one frame past the segment so concatenated
+    cuts land exactly on the next segment's first frame."""
+    spin = bpy.data.objects.new("Spin", None)
+    bpy.context.collection.objects.link(spin)
+    for obj in bpy.context.scene.objects:
+        if obj.type == "MESH" and obj.name != "Cyclorama":
+            obj.parent = spin
+    bpy.context.preferences.edit.keyframe_new_interpolation_type = "LINEAR"
+    seg = 2 * math.pi / seg_count
+    spin.rotation_euler = (0, 0, seg_index * seg)
+    spin.keyframe_insert("rotation_euler", index=2, frame=1)
+    spin.rotation_euler = (0, 0, (seg_index + 1) * seg)
+    spin.keyframe_insert("rotation_euler", index=2, frame=frames + 1)
+    cam = bpy.context.scene.camera
+    cam.location = tuple(v * 1.05 for v in (0.46, -0.60, 0.18))
+
+
 def main():
     args = parse_args()
     manifest = json.loads(Path(args.manifest).read_text(encoding="utf-8"))
     scene = None
+    n = len(manifest["concepts"])
     for i, c in enumerate(manifest["concepts"]):
         build_concept_scene(c, args.samples)
-        rig_camera_move(c, i % 3, args.frames_per)
+        if args.move == "orbit":
+            rig_bag_spin(i, n, args.frames_per)
+        else:
+            rig_camera_move(c, i % 3, args.frames_per)
         scene = bpy.context.scene
         scene.render.resolution_x = args.res_x
         scene.render.resolution_y = args.res_y

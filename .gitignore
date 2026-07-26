@@ -30,6 +30,7 @@ venv/
 # render intermediates (mp4s ship, raw frames don't — hundreds of MB)
 designs/renders/turntable_frames/
 designs/renders/reel_frames/
+designs/renders/orbit_frames/
 
 # node (deck tooling only)
 node_modules/
