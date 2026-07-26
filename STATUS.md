@@ -23,6 +23,8 @@ Legend: 🟢 GREEN (works, verified) · 🟡 AMBER (works, caveats) · 🔴 RED 
 | T07 | AI leg: image → mesh → pattern | 🟢 GREEN | TripoSR: 27 s cold / ~10 s warm, ~5.3 GB VRAM; full image→tech pack 17.4 s; 22 pieces @ 60.7% util, 0.94 yd → $16.90/unit draft |
 | T07 | TRELLIS.2 / Hunyuan3D Windows runtimes | 🟡 AMBER | Weights present; runtimes need compiled CUDA exts and no MSVC linker on box — TripoSR is the working leg |
 | T08 | run_pipeline.py + README | 🟢 GREEN | One command, both input modes; 60 pytest green |
+| + | pipeline/ExportDXF.py (AutoCAD/laser cut paths) | 🟢 GREEN | Layered DXF, mm units; 2 tests |
+| + | pipeline/PhotoPolish.py (Nano Banana finishing) | 🟢 GREEN | Gemini 2.5 Flash Image; key from env (never committed); color-drift caveat noted |
 | T09 | Close-out | 🟢 GREEN | See RUN-REPORT.md |
 
 ## Test suite
