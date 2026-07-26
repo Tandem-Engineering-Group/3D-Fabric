@@ -27,6 +27,11 @@ venv/
 # Local-only business documents — public repo carries no personal data
 *.pdf
 
+# node (deck tooling only)
+node_modules/
+package.json
+package-lock.json
+
 # OS noise
 Thumbs.db
 desktop.ini
