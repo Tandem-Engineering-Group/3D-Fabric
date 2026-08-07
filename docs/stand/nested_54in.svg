@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1371.6mm" height="2276.4mm" viewBox="0 0 1371.600 2276.400">
+<!-- DRAFT — unverified SVG, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal. -->
+<title>color-me-art-wraps-foam nested @ 54 in</title>
+
+<rect x="0" y="0" width="1371.600" height="2276.400" fill="none" stroke="#0a84ff" stroke-width="1" stroke-dasharray="8 4"/>
+<g id="piece-3-c1" class="piece" transform="translate(767.400 0.000) rotate(90)">
+<title>wrapC_foam</title>
+<polygon points="0.000,0.000 1504.000,0.000 1504.000,767.400 0.000,767.400" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="752.0" y="383.7" font-size="14.0" text-anchor="middle" font-family="sans-serif">C<tspan x="752.0" dy="14.0" font-size="6.3">wrapC_foam</tspan></text>
+</g>
+<g id="piece-1-c1" class="piece" transform="translate(1362.000 0.000) rotate(90)">
+<title>wrapA_foam</title>
+<polygon points="0.000,0.000 1351.600,0.000 1351.600,589.600 0.000,589.600" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="675.8" y="294.8" font-size="14.0" text-anchor="middle" font-family="sans-serif">A<tspan x="675.8" dy="14.0" font-size="6.3">wrapA_foam</tspan></text>
+</g>
+<g id="piece-2-c1" class="piece" transform="translate(0.000 1509.000) rotate(0)">
+<title>wrapB_foam</title>
+<polygon points="0.000,0.000 996.000,0.000 996.000,767.400 0.000,767.400" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="498.0" y="383.7" font-size="14.0" text-anchor="middle" font-family="sans-serif">B<tspan x="498.0" dy="14.0" font-size="6.3">wrapB_foam</tspan></text>
+</g>
+</svg>

@@ -247,6 +247,36 @@
   .dropzone model-viewer { width: 100%; height: 420px; display: block; }
   .mnote { margin-top: 14px; font-size: 13px; color: var(--muted); }
 
+  /* the stand */
+  .standview {
+    position: relative; background: var(--card); border: 1px solid var(--line);
+    border-radius: 4px; overflow: hidden; margin-top: 18px;
+  }
+  .standview img, .standview model-viewer { width: 100%; height: 440px; display: block; object-fit: cover; }
+  .standview .overbtn { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); }
+  .tablewrap { overflow-x: auto; margin-top: 14px; }
+  table.spec { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 4px; }
+  table.spec th {
+    text-align: left; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 14px; border-bottom: 1.5px dashed var(--copper);
+  }
+  table.spec td { padding: 9px 14px; border-bottom: 1px dashed var(--line); vertical-align: top; }
+  table.spec tr:last-child td { border-bottom: 0; }
+  table.spec td b { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .cuts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+  .cut { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 12px; }
+  .cut img { width: 100%; height: 300px; object-fit: contain; background: #fff; border-radius: 3px; }
+  .cut b { display: block; font-size: 13.5px; margin-top: 8px; }
+  .cut span { font-size: 12.5px; color: var(--muted); }
+  .palette { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .swatch { text-align: center; font-size: 11px; color: var(--muted); }
+  .swatch i { display: block; width: 64px; height: 40px; border-radius: 3px; border: 1px solid var(--line); margin-bottom: 4px; }
+  .flagnote {
+    margin-top: 18px; padding: 13px 16px; border: 1.5px dashed var(--amber);
+    border-radius: 4px; font-size: 14px; background: var(--card);
+  }
+  .flagnote b { color: var(--amber); }
+
   a { color: var(--denim); text-decoration-thickness: 1px; text-underline-offset: 2px; }
   a:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
   .foot { margin-top: 40px; font-size: 13px; color: var(--muted); }
@@ -272,6 +302,7 @@
     <button class="tab" id="tab-plan" role="tab" aria-selected="false" aria-controls="panel-plan" data-panel="plan">Ten-week plan</button>
     <button class="tab" id="tab-brief" role="tab" aria-selected="false" aria-controls="panel-brief" data-panel="brief">First purse — the brief</button>
     <button class="tab" id="tab-models" role="tab" aria-selected="false" aria-controls="panel-models" data-panel="models">3D models</button>
+    <button class="tab" id="tab-stand" role="tab" aria-selected="false" aria-controls="panel-stand" data-panel="stand">The stand</button>
   </nav>
 
   <!-- ============ TAB: STATUS ============ -->
@@ -683,6 +714,93 @@
     </section>
   </div>
 
+  <!-- ============ TAB: THE STAND ============ -->
+  <div class="panel" id="panel-stand" role="tabpanel" aria-labelledby="tab-stand" hidden>
+    <section>
+      <h2>Color Me Art — the mobile stand</h2>
+      <p class="lede">A knock-down book stand that packs into three padded wraps and sets up
+      as the sales booth — the wraps themselves become the roof valance, side curtains, and
+      counter skirt. Carry it. Assemble it. Dress it. Sell from it. The purses go on the
+      shelf; the whole shop fits in a sedan.</p>
+      <p><a class="btn solid" href="https://tandemeng3.autodesk360.com/g/shares/SH28cd1QT2badd0ea72b298ae97b80a5ec6e">Open the CAD (Autodesk Viewer)</a>
+      &nbsp;<a class="btn ghost" href="https://github.com/Tandem-Engineering-Group/3D-Fabric/blob/main/techpack/color-me-art-wraps.md">Tech pack</a>
+      &nbsp;<a class="btn ghost" href="models/color-me-art-stand.glb" download>Download .glb</a></p>
+
+      <div class="standview" id="standview">
+        <img src="thumbs/color-me-art-stand.jpg" alt="Assembled Color Me Art stand with bags staged">
+        <button class="btn solid overbtn" id="stand-view3d" type="button">View in 3D</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>3</b><span>wraps carry the whole booth — total empty weight ~6.1 lb</span></div>
+        <div class="stat"><b>90.0%</b><span>cut-layout utilization, outer 600D on 58 in</span></div>
+        <div class="stat"><b>3.05 yd</b><span>outer fabric per kit (+2.64 liner, +2.74 foam)</span></div>
+        <div class="stat"><b>$74.68</b><span>draft materials per kit — prices pending real quotes</span></div>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>The three wraps</h2>
+      <p class="lede">One fastening system — the wraps grommet onto the stand's existing
+      ¼"-20 star knobs. Hand-tight plus a quarter turn; removes in seconds.</p>
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>Wrap</th><th>Carries</th><th>Packed</th><th>Unwrapped</th><th>Becomes</th></tr>
+          <tr><td><b>A</b> — base</td><td>Deck, front panel/chalkboard, stretchers, hardware pouch</td><td><b>36×31×6½"</b></td><td><b>54×24"</b></td><td>Front counter skirt</td></tr>
+          <tr><td><b>B</b> — left side</td><td>Left panel, shelf, post, shutter</td><td><b>20×31×6½"</b></td><td><b>40×31"</b></td><td>Left side curtain</td></tr>
+          <tr><td><b>C</b> — right + roof</td><td>Right panel, counter top, post, roof, sign</td><td><b>40×31×7½"</b></td><td><b>60×31"</b></td><td>Right curtain + roof valance</td></tr>
+        </table>
+      </div>
+      <p class="lede" style="margin-top:12px">Construction: 600D solution-dyed polyester
+      (PVC-backed) over ⅛" closed-cell foam with a tricot liner, edges bound in 1" webbing,
+      double-stitched with UV poly V-92 thread. Weather-, UV-, and abrasion-resistant.</p>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>Cut layouts &amp; costs</h2>
+      <p class="lede">Straight from the pipeline: every piece nested on the roll, yardage
+      and draft cost computed per kit. Full pattern sheet:
+      <a href="stand/pattern.svg">color-me-art-wraps_pattern.svg</a>.</p>
+      <div class="cuts">
+        <div class="cut"><img src="stand/nested_58in.svg" alt="Outer 600D cut layout" loading="lazy">
+          <b>Outer — 600D poly, 58 in roll</b><span>3.05 yd/kit · 90.0% utilization · $38.15 draft</span></div>
+        <div class="cut"><img src="stand/nested_60in.svg" alt="Tricot liner cut layout" loading="lazy">
+          <b>Liner — brushed tricot, 60 in</b><span>2.64 yd/kit · 88.9% utilization · $11.88 draft</span></div>
+        <div class="cut"><img src="stand/nested_54in.svg" alt="Foam cut layout" loading="lazy">
+          <b>Padding — ⅛ in closed-cell foam</b><span>2.74 yd/kit · 87.0% utilization · $24.65 draft</span></div>
+      </div>
+
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>Hardware (per kit)</th><th>Qty</th><th>Spec</th></tr>
+          <tr><td>Grommets</td><td><b>72</b></td><td>½" ID nickel brass, set through 2×2" webbing reinforcement, every 6–8"</td></tr>
+          <tr><td>Webbing, 1" nylon</td><td><b>22 yd</b></td><td>Edge binding + carry handles + compression straps, black</td></tr>
+          <tr><td>Quick-release buckles</td><td><b>6</b></td><td>1" side-release, two per wrap</td></tr>
+          <tr><td>Star knobs + studs</td><td><b>12 + 12</b></td><td>¼"-20, mate to the stand's existing hanger studs</td></tr>
+          <tr><td>Zipper</td><td><b>1</b></td><td>#5 coil, 12", hardware pouch</td></tr>
+          <tr><td>Thread</td><td>—</td><td>UV-stable poly V-92 (Tex 90), min 5 SPI, seams double-stitched</td></tr>
+        </table>
+      </div>
+
+      <div class="palette">
+        <div class="swatch"><i style="background:#F4F1FA"></i>Iris</div>
+        <div class="swatch"><i style="background:#DCCFF0"></i>Lilac</div>
+        <div class="swatch"><i style="background:#B39DDB"></i>Wisteria</div>
+        <div class="swatch"><i style="background:#7E57C2"></i>Violet</div>
+        <div class="swatch"><i style="background:#4A3768"></i>Plum</div>
+      </div>
+
+      <div class="flagnote"><b>Verify before cutting:</b> the build sheet disagrees with
+      itself on Wrap A — sheet 12 draws the skirt at 36"×18" drop, the overview sheet lists
+      54"×24" unwrapped. These layouts use 54×24. Erika should confirm against the CAD.
+      All prices are DRAFT placeholders pending vendor quotes.</div>
+    </section>
+  </div>
+
   <hr class="seam">
 
   <footer class="foot">
@@ -722,7 +840,7 @@
     });
     function fromHash() {
       var h = location.hash.replace('#', '');
-      if (h === 'plan' || h === 'brief' || h === 'status' || h === 'models') show(h);
+      if (h === 'plan' || h === 'brief' || h === 'status' || h === 'models' || h === 'stand') show(h);
     }
     window.addEventListener('hashchange', fromHash);
     fromHash();
@@ -829,6 +947,20 @@
         });
       })
       .catch(function () { /* offline or restricted preview — baked list already shown */ });
+
+    // The stand tab's inline viewer
+    var sv = document.getElementById('standview');
+    var svBtn = document.getElementById('stand-view3d');
+    if (sv && svBtn) {
+      svBtn.addEventListener('click', function () {
+        svBtn.disabled = true;
+        withViewer(function (ok) {
+          if (!ok) { svBtn.textContent = '3D viewer unavailable here'; return; }
+          sv.innerHTML = '';
+          sv.appendChild(makeViewer('models/color-me-art-stand.glb', null));
+        });
+      });
+    }
 
     // Local preview drop zone — files never leave the device.
     var dz = document.getElementById('dropzone');
