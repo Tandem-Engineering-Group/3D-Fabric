@@ -1,0 +1,124 @@
+{
+  "schema": "3dfabric.pieces/1",
+  "design": "color-me-art-wraps-liner",
+  "units": "mm",
+  "seam_allowance_mm": 0.0,
+  "source_mesh": null,
+  "draft": "DRAFT \u2014 unverified pattern pieces, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "pieces": [
+    {
+      "id": "piece-1",
+      "name": "wrapA_liner",
+      "label": "A",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1371.6,
+          0.0
+        ],
+        [
+          1371.6,
+          609.5999999999999
+        ],
+        [
+          0.0,
+          609.5999999999999
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "Tricot liner, quilted to foam, bound with outer."
+    },
+    {
+      "id": "piece-2",
+      "name": "wrapB_liner",
+      "label": "B",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1016.0,
+          0.0
+        ],
+        [
+          1016.0,
+          787.4
+        ],
+        [
+          0.0,
+          787.4
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "Tricot liner, quilted to foam, bound with outer."
+    },
+    {
+      "id": "piece-3",
+      "name": "wrapC_liner",
+      "label": "C",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1524.0,
+          0.0
+        ],
+        [
+          1524.0,
+          787.4
+        ],
+        [
+          0.0,
+          787.4
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "Tricot liner, quilted to foam, bound with outer."
+    },
+    {
+      "id": "piece-4",
+      "name": "pouch_liner",
+      "label": "G",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          317.5,
+          0.0
+        ],
+        [
+          317.5,
+          215.89999999999998
+        ],
+        [
+          0.0,
+          215.89999999999998
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 2,
+      "grainline_deg": 0.0,
+      "notes": ""
+    }
+  ],
+  "source": "colormeartbuildsheet.pdf sheet 12/14 rev A 2026-08-02",
+  "note": "Edges webbing-bound; hems included in pocket cuts."
+}

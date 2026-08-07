@@ -1,0 +1,18 @@
+{
+  "schema": "3dfabric.takeoff/1",
+  "design": "color-me-art-wraps-foam",
+  "material": "foam_ccf",
+  "material_display": "Closed-cell foam 1/8 in",
+  "unit": "yard",
+  "qty": 1,
+  "sheet_width_in": 54.0,
+  "utilization": 0.86967763,
+  "waste_factor": 0.1,
+  "linear_yd_per_unit": 2.7384,
+  "material_cost_per_unit_usd": 24.65,
+  "assumptions": [
+    "Prices in the material price book are DRAFT placeholders until verified against vendor quotes.",
+    "Waste factor 10% applied on top of the nested layout."
+  ],
+  "draft": "DRAFT \u2014 unverified takeoff, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal."
+}
