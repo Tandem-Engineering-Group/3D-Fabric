@@ -26,7 +26,7 @@ Legend: 🟢 GREEN (works, verified) · 🟡 AMBER (works, caveats) · 🔴 RED 
 | + | pipeline/ExportDXF.py (AutoCAD/laser cut paths) | 🟢 GREEN | Layered DXF, mm units; 2 tests |
 | + | pipeline/PhotoPolish.py (Nano Banana finishing) | 🟢 GREEN | Gemini 2.5 Flash Image; key from env (never committed); color-drift caveat noted |
 | + | Collection 01 "Ten for the D" | 🟢 GREEN | 10 concepts (designs/collection01.json): rendered, polished 10/10, patterned + priced ($3.82–$7.05 draft canvas), lookbook + seamless reel. Prints are placeholders pending real Color Me Art files |
-| + | Color Me Art wrap system (book-stand kit, sheet 12/14) | 🟢 GREEN | Patterns authored from build sheet (rect pieces, bound edges — no Blender needed): 3 designs nested (outer 3.05 yd @ 90%, liner 2.86 yd, foam 2.75 yd), takeoffs + tech pack w/ real hardware BOM — $74.68/kit draft materials. Assembled-booth display GLB + bags staged on portal 3D tab |
+| + | Color Me Art wrap system (book-stand kit, sheet 12/14) | 🟢 GREEN | Patterns authored from build sheet (rect pieces, bound edges — no Blender needed): 3 designs nested (outer 3.05 yd @ 90%, liner 2.64 yd, foam 2.74 yd), takeoffs + tech pack w/ real hardware BOM — $74.68/kit draft materials. Assembled-booth display GLB + bags staged on portal 3D tab |
 | T09 | Close-out | 🟢 GREEN | See RUN-REPORT.md |
 
 ## Test suite
