@@ -1,0 +1,18 @@
+{
+  "schema": "3dfabric.takeoff/1",
+  "design": "color-me-art-wraps",
+  "material": "poly600d_pvc",
+  "material_display": "600D solution-dyed polyester, PVC-backed (Color Me Art lavender)",
+  "unit": "yard",
+  "qty": 1,
+  "sheet_width_in": 58.0,
+  "utilization": 0.89959693,
+  "waste_factor": 0.1,
+  "linear_yd_per_unit": 3.0522,
+  "material_cost_per_unit_usd": 38.15,
+  "assumptions": [
+    "Prices in the material price book are DRAFT placeholders until verified against vendor quotes.",
+    "Waste factor 10% applied on top of the nested layout."
+  ],
+  "draft": "DRAFT \u2014 unverified takeoff, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal."
+}

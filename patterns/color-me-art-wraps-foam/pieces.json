@@ -1,0 +1,96 @@
+{
+  "schema": "3dfabric.pieces/1",
+  "design": "color-me-art-wraps-foam",
+  "units": "mm",
+  "seam_allowance_mm": 0.0,
+  "source_mesh": null,
+  "draft": "DRAFT \u2014 unverified pattern pieces, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "pieces": [
+    {
+      "id": "piece-1",
+      "name": "wrapA_foam",
+      "label": "A",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1351.6,
+          0.0
+        ],
+        [
+          1351.6,
+          589.5999999999999
+        ],
+        [
+          0.0,
+          589.5999999999999
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "1/8 in closed-cell foam, trimmed 10 mm inside binding."
+    },
+    {
+      "id": "piece-2",
+      "name": "wrapB_foam",
+      "label": "B",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          996.0,
+          0.0
+        ],
+        [
+          996.0,
+          767.4
+        ],
+        [
+          0.0,
+          767.4
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "1/8 in closed-cell foam, trimmed 10 mm inside binding."
+    },
+    {
+      "id": "piece-3",
+      "name": "wrapC_foam",
+      "label": "C",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1504.0,
+          0.0
+        ],
+        [
+          1504.0,
+          767.4
+        ],
+        [
+          0.0,
+          767.4
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "1/8 in closed-cell foam, trimmed 10 mm inside binding."
+    }
+  ],
+  "source": "colormeartbuildsheet.pdf sheet 12/14 rev A 2026-08-02",
+  "note": "Edges webbing-bound; hems included in pocket cuts."
+}

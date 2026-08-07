@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1473.1999999999998mm" height="2537.3mm" viewBox="0 0 1473.200 2537.300">
+<!-- DRAFT — unverified SVG, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal. -->
+<title>color-me-art-wraps nested @ 58 in</title>
+
+<rect x="0" y="0" width="1473.200" height="2537.300" fill="none" stroke="#0a84ff" stroke-width="1" stroke-dasharray="8 4"/>
+<g id="piece-3-c1" class="piece" transform="translate(787.400 0.000) rotate(90)">
+<title>wrapC_main</title>
+<polygon points="0.000,0.000 1524.000,0.000 1524.000,787.400 0.000,787.400" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="762.0" y="393.7" font-size="14.0" text-anchor="middle" font-family="sans-serif">C<tspan x="762.0" dy="14.0" font-size="6.3">wrapC_main</tspan></text>
+</g>
+<g id="piece-1-c1" class="piece" transform="translate(1402.000 0.000) rotate(90)">
+<title>wrapA_main</title>
+<polygon points="0.000,0.000 1371.600,0.000 1371.600,609.600 0.000,609.600" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="685.8" y="304.8" font-size="14.0" text-anchor="middle" font-family="sans-serif">A<tspan x="685.8" dy="14.0" font-size="6.3">wrapA_main</tspan></text>
+</g>
+<g id="piece-2-c1" class="piece" transform="translate(0.000 1529.000) rotate(0)">
+<title>wrapB_main</title>
+<polygon points="0.000,0.000 1016.000,0.000 1016.000,787.400 0.000,787.400" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="508.0" y="393.7" font-size="14.0" text-anchor="middle" font-family="sans-serif">B<tspan x="508.0" dy="14.0" font-size="6.3">wrapB_main</tspan></text>
+</g>
+<g id="piece-5-c1" class="piece" transform="translate(1312.000 1376.600) rotate(90)">
+<title>wrapBC_pocket</title>
+<polygon points="0.000,0.000 278.000,0.000 278.000,291.000 0.000,291.000" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="139.0" y="145.5" font-size="14.0" text-anchor="middle" font-family="sans-serif">E<tspan x="139.0" dy="14.0" font-size="6.3">wrapBC_pocket</tspan></text>
+</g>
+<g id="piece-5-c2" class="piece" transform="translate(1312.000 1659.600) rotate(90)">
+<title>wrapBC_pocket</title>
+<polygon points="0.000,0.000 278.000,0.000 278.000,291.000 0.000,291.000" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="139.0" y="145.5" font-size="14.0" text-anchor="middle" font-family="sans-serif">E<tspan x="139.0" dy="14.0" font-size="6.3">wrapBC_pocket</tspan></text>
+</g>
+<g id="piece-4-c1" class="piece" transform="translate(1021.000 1942.600) rotate(0)">
+<title>wrapA_pocket</title>
+<polygon points="0.000,0.000 328.800,0.000 328.800,240.200 0.000,240.200" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="164.4" y="120.1" font-size="14.0" text-anchor="middle" font-family="sans-serif">D<tspan x="164.4" dy="14.0" font-size="6.3">wrapA_pocket</tspan></text>
+</g>
+<g id="piece-4-c2" class="piece" transform="translate(1021.000 2187.800) rotate(0)">
+<title>wrapA_pocket</title>
+<polygon points="0.000,0.000 328.800,0.000 328.800,240.200 0.000,240.200" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="164.4" y="120.1" font-size="14.0" text-anchor="middle" font-family="sans-serif">D<tspan x="164.4" dy="14.0" font-size="6.3">wrapA_pocket</tspan></text>
+</g>
+<g id="piece-7-c1" class="piece" transform="translate(0.000 2321.400) rotate(0)">
+<title>pouch_panel</title>
+<polygon points="0.000,0.000 317.500,0.000 317.500,215.900 0.000,215.900" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="158.8" y="107.9" font-size="14.0" text-anchor="middle" font-family="sans-serif">G<tspan x="158.8" dy="14.0" font-size="6.3">pouch_panel</tspan></text>
+</g>
+<g id="piece-7-c2" class="piece" transform="translate(322.500 2321.400) rotate(0)">
+<title>pouch_panel</title>
+<polygon points="0.000,0.000 317.500,0.000 317.500,215.900 0.000,215.900" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="158.8" y="107.9" font-size="14.0" text-anchor="middle" font-family="sans-serif">G<tspan x="158.8" dy="14.0" font-size="6.3">pouch_panel</tspan></text>
+</g>
+<g id="piece-6-c1" class="piece" transform="translate(792.400 1376.600) rotate(0)">
+<title>handle_pad</title>
+<polygon points="0.000,0.000 203.200,0.000 203.200,114.300 0.000,114.300" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="101.6" y="57.1" font-size="14.0" text-anchor="middle" font-family="sans-serif">F<tspan x="101.6" dy="14.0" font-size="6.3">handle_pad</tspan></text>
+</g>
+<g id="piece-6-c2" class="piece" transform="translate(1431.300 1376.600) rotate(90)">
+<title>handle_pad</title>
+<polygon points="0.000,0.000 203.200,0.000 203.200,114.300 0.000,114.300" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="101.6" y="57.1" font-size="14.0" text-anchor="middle" font-family="sans-serif">F<tspan x="101.6" dy="14.0" font-size="6.3">handle_pad</tspan></text>
+</g>
+<g id="piece-6-c3" class="piece" transform="translate(1431.300 1584.800) rotate(90)">
+<title>handle_pad</title>
+<polygon points="0.000,0.000 203.200,0.000 203.200,114.300 0.000,114.300" fill="none" stroke="#111" stroke-width="0.5"/>
+<text x="101.6" y="57.1" font-size="14.0" text-anchor="middle" font-family="sans-serif">F<tspan x="101.6" dy="14.0" font-size="6.3">handle_pad</tspan></text>
+</g>
+</svg>

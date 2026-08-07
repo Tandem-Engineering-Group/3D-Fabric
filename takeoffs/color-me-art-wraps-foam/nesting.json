@@ -1,0 +1,35 @@
+{
+  "schema": "3dfabric.nesting/1",
+  "design": "color-me-art-wraps-foam",
+  "sheet_width_in": 54.0,
+  "gap_mm": 5.0,
+  "used_length_mm": 2276.4,
+  "used_length_in": 89.62,
+  "used_length_yd": 2.49,
+  "utilization": 0.86967763,
+  "total_piece_area_mm2": 2715403.4,
+  "draft": "DRAFT \u2014 unverified nesting layout, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "placements": [
+    {
+      "piece_id": "piece-3",
+      "copy": 1,
+      "x_mm": 767.4,
+      "y_mm": 0.0,
+      "rotation_deg": 90.0
+    },
+    {
+      "piece_id": "piece-1",
+      "copy": 1,
+      "x_mm": 1362.0,
+      "y_mm": 0.0,
+      "rotation_deg": 90.0
+    },
+    {
+      "piece_id": "piece-2",
+      "copy": 1,
+      "x_mm": 0.0,
+      "y_mm": 1509.0,
+      "rotation_deg": 0.0
+    }
+  ]
+}

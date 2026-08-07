@@ -1,0 +1,208 @@
+{
+  "schema": "3dfabric.pieces/1",
+  "design": "color-me-art-wraps",
+  "units": "mm",
+  "seam_allowance_mm": 0.0,
+  "source_mesh": null,
+  "draft": "DRAFT \u2014 unverified pattern pieces, generated 2026-08-07 by 3D-Fabric pipeline. AI drafts, engineers seal.",
+  "pieces": [
+    {
+      "id": "piece-1",
+      "name": "wrapA_main",
+      "label": "A",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1371.6,
+          0.0
+        ],
+        [
+          1371.6,
+          609.5999999999999
+        ],
+        [
+          0.0,
+          609.5999999999999
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "Wrap A \u2014 base/front skirt. Edges webbing-bound, no SA."
+    },
+    {
+      "id": "piece-2",
+      "name": "wrapB_main",
+      "label": "B",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1016.0,
+          0.0
+        ],
+        [
+          1016.0,
+          787.4
+        ],
+        [
+          0.0,
+          787.4
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "Wrap B \u2014 left side curtain. Edges webbing-bound, no SA."
+    },
+    {
+      "id": "piece-3",
+      "name": "wrapC_main",
+      "label": "C",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1524.0,
+          0.0
+        ],
+        [
+          1524.0,
+          787.4
+        ],
+        [
+          0.0,
+          787.4
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 1,
+      "grainline_deg": 0.0,
+      "notes": "Wrap C \u2014 right side + roof valance. Edges webbing-bound, no SA."
+    },
+    {
+      "id": "piece-4",
+      "name": "wrapA_pocket",
+      "label": "D",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          328.79999999999995,
+          0.0
+        ],
+        [
+          328.79999999999995,
+          240.2
+        ],
+        [
+          0.0,
+          240.2
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 2,
+      "grainline_deg": 0.0,
+      "notes": "Storage pockets 12x8 finished; hems included in cut."
+    },
+    {
+      "id": "piece-5",
+      "name": "wrapBC_pocket",
+      "label": "E",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          278.0,
+          0.0
+        ],
+        [
+          278.0,
+          291.0
+        ],
+        [
+          0.0,
+          291.0
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 2,
+      "grainline_deg": 0.0,
+      "notes": "Accessory pockets 10x10 finished (one wrap B, one wrap C)."
+    },
+    {
+      "id": "piece-6",
+      "name": "handle_pad",
+      "label": "F",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          203.2,
+          0.0
+        ],
+        [
+          203.2,
+          114.3
+        ],
+        [
+          0.0,
+          114.3
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 3,
+      "grainline_deg": 0.0,
+      "notes": "Padded handle wrap, folds over 1 in webbing carry handle."
+    },
+    {
+      "id": "piece-7",
+      "name": "pouch_panel",
+      "label": "G",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          317.5,
+          0.0
+        ],
+        [
+          317.5,
+          215.89999999999998
+        ],
+        [
+          0.0,
+          215.89999999999998
+        ]
+      ],
+      "holes": [],
+      "stitch_polygon": null,
+      "cut_qty": 2,
+      "grainline_deg": 0.0,
+      "notes": "Hardware pouch front/back, 12x8 finished, #5 zipper top."
+    }
+  ],
+  "source": "colormeartbuildsheet.pdf sheet 12/14 rev A 2026-08-02",
+  "note": "Edges webbing-bound; hems included in pocket cuts."
+}

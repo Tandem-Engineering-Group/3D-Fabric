@@ -17,6 +17,21 @@ materials:
     unit: yard
     width_in: 60
     price_usd: 14.00        # DRAFT placeholder
+  poly600d_pvc:
+    display: "600D solution-dyed polyester, PVC-backed (Color Me Art lavender)"
+    unit: yard
+    width_in: 58
+    price_usd: 12.50        # DRAFT placeholder — marine/outdoor fabric quote needed
+  tricot_liner:
+    display: "Brushed tricot lining"
+    unit: yard
+    width_in: 60
+    price_usd: 4.50         # DRAFT placeholder
+  foam_ccf:
+    display: "Closed-cell foam 1/8 in"
+    unit: yard
+    width_in: 54
+    price_usd: 9.00         # DRAFT placeholder
   leather_fullgrain:
     display: "Full-grain leather, medium temper"
     unit: hide
