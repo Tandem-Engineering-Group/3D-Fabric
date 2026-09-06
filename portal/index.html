@@ -277,6 +277,27 @@
   }
   .flagnote b { color: var(--amber); }
 
+  /* who to call */
+  .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  @media (max-width: 800px) { .contacts { grid-template-columns: 1fr; } }
+  .contact {
+    background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--denim);
+    border-radius: 4px; padding: 14px 16px 14px 16px;
+  }
+  .contact h3 { font-size: 16px; margin-bottom: 2px; }
+  .contact .role { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: 62px 1fr; gap: 3px 10px; font-size: 13.5px; }
+  .contact dt { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding-top: 2px; }
+  .contact dd { margin: 0; }
+  .contact .ask { margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 13px; }
+  .contact .ask b { color: var(--copper); }
+  .contact.bench { border-left-color: var(--muted); }
+  .contact.hot { border-left-color: var(--red); }
+  .script {
+    margin-top: 14px; padding: 16px 20px; background: var(--card); border: 1.5px dashed var(--denim);
+    border-radius: 4px; font-size: 15px; font-style: italic; line-height: 1.5;
+  }
+
   a { color: var(--denim); text-decoration-thickness: 1px; text-underline-offset: 2px; }
   a:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
   .foot { margin-top: 40px; font-size: 13px; color: var(--muted); }
@@ -303,6 +324,7 @@
     <button class="tab" id="tab-brief" role="tab" aria-selected="false" aria-controls="panel-brief" data-panel="brief">First purse — the brief</button>
     <button class="tab" id="tab-models" role="tab" aria-selected="false" aria-controls="panel-models" data-panel="models">3D models</button>
     <button class="tab" id="tab-stand" role="tab" aria-selected="false" aria-controls="panel-stand" data-panel="stand">The stand</button>
+    <button class="tab" id="tab-make" role="tab" aria-selected="false" aria-controls="panel-make" data-panel="make">Who to call</button>
   </nav>
 
   <!-- ============ TAB: STATUS ============ -->
@@ -801,6 +823,234 @@
     </section>
   </div>
 
+  <!-- ============ TAB: WHO TO CALL ============ -->
+  <div class="panel" id="panel-make" role="tabpanel" aria-labelledby="tab-make" hidden>
+    <section>
+      <h2>How to get the first bags made — and who to call</h2>
+      <p class="lede">The fabrication path from pattern to a sellable small batch, the Detroit people
+      who can do each step, what to ask them, and what it should cost. Contacts verified
+      September 6, 2026 — confirm before relying on any number.</p>
+      <div class="flagnote"><b>Do this first:</b> Motor City Match Round 33 is <b>open now</b> and
+      closes <b>October 1, 2026</b>. Submit by September 30. Cash grants have averaged about $50,000.
+      <a href="https://www.motorcitymatch.com/">motorcitymatch.com</a></div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>The fabrication path</h2>
+      <p class="lede">Eight steps, in order. Weeks match the ten-week plan.</p>
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>Step</th><th>What happens</th><th>Who / where</th><th>You hand over</th><th>Wk</th></tr>
+          <tr><td><b>1</b> Lock the design</td><td>Answer the ten-question brief; pick the 3 hero bags.</td><td>Erika + Richard</td><td>Brief answers, sketch photo</td><td>1</td></tr>
+          <tr><td><b>2</b> Pattern</td><td>Pipeline exports the flat pattern (SVG in mm, 10 mm seam allowance) and DXF; curate seams so every piece has a name.</td><td>Richard (pipeline)</td><td>SVG + DXF, tech pack</td><td>1</td></tr>
+          <tr><td><b>3</b> Felt fit-check</td><td>Laser-cut the pattern in felt, tape it up, check proportions and handle placement. Mark corrections. Repeat once.</td><td>Ponoko (mail-order) or The Hawk laser</td><td>SVG/DXF upload</td><td>1–3</td></tr>
+          <tr><td><b>4</b> Source materials</td><td>Buy 2 yd of the real fabric, lining, zipper, D-rings, chain, thread. Get written 50-unit quotes.</td><td>Haberman, Tandy, Buckleguy / Ohio Travel Bag</td><td>Real prices into the cost sheets</td><td>2</td></tr>
+          <tr><td><b>5</b> Prototype #1</td><td>Sew one bag in real fabric — yourself at a makerspace, or pay a factory first-sample fee. Photograph every step.</td><td>The Hawk sewing lab, or ISAIC</td><td>Pattern, materials, tech pack</td><td>4</td></tr>
+          <tr><td><b>6</b> Wear-test + v2</td><td>Carry it a week. Fix what annoys you. Sew prototype #2 and the second silhouette.</td><td>Erika</td><td>Notes → pattern v2</td><td>5–6</td></tr>
+          <tr><td><b>7</b> Quote the batch</td><td>Send the handoff kit to 2–3 shops. Ask for 10 / 25 / 50 unit pricing and lead time. Pick one.</td><td>ISAIC, Pingree, Soft Goods Detroit</td><td>Handoff kit</td><td>7</td></tr>
+          <tr><td><b>8</b> Make + sell</td><td>Approve the pre-production sample, run ~10 units, inspect every bag, price it, launch.</td><td>Chosen shop; Eastern Market</td><td>Signed sample, PO</td><td>8–10</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>Who can make it — contract cut and sew</h2>
+      <p class="lede">Call in this order. Detroit Sewn (Pontiac) was removed — it closed in February 2024.</p>
+      <div class="contacts">
+        <div class="contact"><h3>ISAIC</h3><p class="role">Industrial Sewing and Innovation Center — nonprofit factory + training center, Midtown</p>
+          <dl><dt>Address</dt><dd>5800 Cass Ave, Suite 43, Detroit, MI 48202</dd>
+              <dt>Phone</dt><dd><a href="tel:+13138701898">(313) 870-1898</a></dd>
+              <dt>Email</dt><dd><a href="mailto:info@isaic.org">info@isaic.org</a></dd>
+              <dt>Web</dt><dd><a href="https://isaic.org/">isaic.org</a></dd>
+              <dt>Why</dt><dd>Built for small-batch and pilot production for new sewn-goods brands. Best first call for the purses <i>and</i> the three booth wraps.</dd></dl>
+          <p class="ask"><b>Ask:</b> Do you take bags with hardware? Sample fee? Minimum run? Lead time? Can you set grommets and rivets in-house? What file formats do you want?</p></div>
+        <div class="contact"><h3>Pingree Detroit</h3><p class="role">Worker-owned co-op — handmade bags and footwear from upcycled automotive leather</p>
+          <dl><dt>Address</dt><dd>Workshop: 15707 Livernois Ave, Detroit, MI 48238 (curbside only); flagship store next to the Fox Theatre</dd>
+              <dt>Phone</dt><dd><a href="tel:+13139222322">(313) 922-2322</a></dd>
+              <dt>Email</dt><dd><a href="mailto:team@pingreedetroit.com">team@pingreedetroit.com</a></dd>
+              <dt>Web</dt><dd><a href="https://pingreedetroit.com/pages/cross-branded-custom-manufacturing">pingreedetroit.com</a></dd>
+              <dt>Why</dt><dd>They already run cross-branded and custom manufacturing. Natural partner for the leather versions; Detroit-made, veteran and Detroiter crafted.</dd></dl>
+          <p class="ask"><b>Ask:</b> Outside patterns or only your own designs? Can we use your upcycled leather for a hero bag? Price at 10 / 25 / 50? Email product, quantity and timeline — that's what they ask for.</p></div>
+        <div class="contact"><h3>Soft Goods Detroit</h3><p class="role">Cut-and-sew factory, New Center — sews for Shinola, StockX, American Trench</p>
+          <dl><dt>Address</dt><dd>1314 Holden St, B-2, Detroit, MI 48202</dd>
+              <dt>Web</dt><dd><a href="https://softgoodsmfg.com/">softgoodsmfg.com</a> (contact form)</dd>
+              <dt>Why</dt><dd>Primarily apparel, but a real Detroit factory. One call to ask whether they take bags — or who they'd refer.</dd></dl>
+          <p class="ask"><b>Ask:</b> Structured bags, or apparel only? If not, who in Detroit do you send bag work to?</p></div>
+        <div class="contact"><h3>D'Artillery</h3><p class="role">Social enterprise — sewing training and small-batch apparel manufacturing, Metro Detroit</p>
+          <dl><dt>Web</dt><dd><a href="https://www.dartillery.org/">dartillery.org</a></dd>
+              <dt>Why</dt><dd>Small-batch manufacturing by trained immigrant women; mission-aligned and sized for a 10–50 unit run.</dd></dl>
+          <p class="ask"><b>Ask:</b> Do you sew bags with hardware? Sample fee and minimums?</p></div>
+        <div class="contact bench"><h3>Shinola <small>(benchmark only)</small></h3><p class="role">Luxury leather factory — the Argonaut Building, New Center</p>
+          <dl><dt>Address</dt><dd>Argonaut Building (Taubman Center), 485 W Milwaukee Ave, Detroit, MI 48202</dd>
+              <dt>Web</dt><dd><a href="https://www.shinola.com/">shinola.com</a></dd>
+              <dt>Why</dt><dd>Not a contract shop. Pattern-to-finish under one roof in Detroit — the price and quality benchmark, and a lead on local tanneries and hardware suppliers.</dd></dl>
+          <p class="ask"><b>Do:</b> Walk the store; note stitch density, edge paint, hardware finish, price points.</p></div>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>Prototype it yourself, and buy materials</h2>
+      <div class="contacts">
+        <div class="contact"><h3>The Hawk Makerspace</h3><p class="role">City of Farmington Hills — inside The Hawk Community Center</p>
+          <dl><dt>Address</dt><dd>29995 W Twelve Mile Rd, Farmington Hills, MI 48334</dd>
+              <dt>Phone</dt><dd><a href="tel:+12486996489">(248) 699-6489</a></dd>
+              <dt>Email</dt><dd><a href="mailto:makerspace@fhgov.com">makerspace@fhgov.com</a></dd>
+              <dt>Web</dt><dd><a href="https://www.fhgov.com/makerspace/">fhgov.com/makerspace</a></dd>
+              <dt>Why</dt><dd>Industrial sewing machines, long-arm, embroidery, <i>and</i> a laser cutter — the whole fit-check + prototype loop on a day pass.</dd></dl>
+          <p class="ask"><b>Ask:</b> Day-pass price? Orientation needed for the industrial machines / laser? Can the laser cut 3 mm felt and 10 oz canvas? Bed size (largest piece ≈ 320 × 200 mm)?</p></div>
+        <div class="contact"><h3>Brightmoor Makerspace</h3><p class="role">Community makerspace, northwest Detroit (U-M partnership)</p>
+          <dl><dt>Address</dt><dd>12675 Burt Rd, Detroit, MI 48223</dd>
+              <dt>Phone</dt><dd><a href="tel:+17346470650">(734) 647-0650</a></dd>
+              <dt>Web</dt><dd><a href="https://brightmoormakerspace.org/">brightmoormakerspace.org</a></dd></dl>
+          <p class="ask"><b>Ask:</b> Adult open hours? Sewing machines? Laser?</p></div>
+        <div class="contact"><h3>OmniCorp Detroit</h3><p class="role">Member-run hackerspace in Eastern Market</p>
+          <dl><dt>Address</dt><dd>1501 E Division St, Detroit, MI 48207</dd>
+              <dt>Web</dt><dd><a href="https://omnicorpdetroit.com/">omnicorpdetroit.com</a></dd>
+              <dt>Why</dt><dd>Laser cutters; open hack night every Thursday, membership by member vote.</dd></dl>
+          <p class="ask"><b>Do:</b> Show up Thursday night with the pattern SVG on a USB stick and ask to cut a felt test.</p></div>
+        <div class="contact"><h3>Ponoko</h3><p class="role">Online laser cutting — upload the SVG, instant quote, felt in stock</p>
+          <dl><dt>Web</dt><dd><a href="https://www.ponoko.com/laser-cutting/fabric/felt">ponoko.com/laser-cutting/fabric/felt</a></dd>
+              <dt>Why</dt><dd>No-driving option for the felt fit-check. Expect roughly $15–40 per bag pattern (estimate — the quote is the answer).</dd></dl></div>
+        <div class="contact"><h3>Haberman Fabrics</h3><p class="role">Independent fabric store — canvas, duck, linings, interfacing, zippers</p>
+          <dl><dt>Address</dt><dd>1060 W 14 Mile Rd, Clawson, MI 48017</dd>
+              <dt>Phone</dt><dd><a href="tel:+12485410010">(248) 541-0010</a></dd>
+              <dt>Web</dt><dd><a href="https://habermanfabrics.com/">habermanfabrics.com</a></dd></dl>
+          <p class="ask"><b>Ask:</b> 10–12 oz canvas or duck in the collection colors? Bolt price per yard? Lead time on a special-order color?</p></div>
+        <div class="contact"><h3>Tandy Leather — Detroit #139</h3><p class="role">Leather, hardware, tools, classes</p>
+          <dl><dt>Address</dt><dd>31104 Five Mile Rd, Livonia, MI 48154</dd>
+              <dt>Phone</dt><dd><a href="tel:+17344229102">(734) 422-9102</a></dd>
+              <dt>Web</dt><dd><a href="https://tandyleather.com/pages/tandy-leather-detroit-139">tandyleather.com</a></dd></dl>
+          <p class="ask"><b>Ask:</b> Price per sq ft on a 2–3 oz chrome-tan side? Business / wholesale account?</p></div>
+      </div>
+      <p class="mnote">Online hardware at maker quantities (chain, D-rings, zipper sliders, feet):
+      <a href="https://www.buckleguy.com/">buckleguy.com</a> and <a href="https://www.ohiotravelbag.com/">ohiotravelbag.com</a>.
+      Also: <a href="https://www.maker-works.com/">Maker Works</a>, Ann Arbor, as the fallback makerspace.</p>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>Money, mentoring, and where to sell</h2>
+      <div class="contacts">
+        <div class="contact hot"><h3>Motor City Match — open now</h3><p class="role">City of Detroit grant + technical assistance program</p>
+          <dl><dt>Web</dt><dd><a href="https://www.motorcitymatch.com/">motorcitymatch.com</a></dd>
+              <dt>Why</dt><dd><b>Round 33 opened Sept 1, closes Oct 1, 2026.</b> Cash grants have averaged ~$50,000. Detroit-based, storefront-bound businesses — the booth-to-shop story fits.</dd></dl>
+          <p class="ask"><b>Have ready:</b> one-page business plan, budget, LLC/EIN, product photos (use the Collection 01 renders), letters of support. Submit by Sept 30.</p></div>
+        <div class="contact"><h3>TechTown Detroit</h3><p class="role">Nonprofit business hub — Retail Boot Camp, Comerica Hatch Detroit ($100k), Coaching Up, Detroit Elevate</p>
+          <dl><dt>Address</dt><dd>440 Burroughs St, Detroit, MI 48202</dd>
+              <dt>Phone</dt><dd><a href="tel:+13138795250">(313) 879-5250</a></dd>
+              <dt>Web</dt><dd><a href="https://techtowndetroit.org/what-we-do/small-business-programs/">techtowndetroit.org</a></dd></dl>
+          <p class="ask"><b>Ask:</b> Next Retail Boot Camp cohort? Hatch Detroit entry dates? Can Coaching Up review the Motor City Match application?</p></div>
+        <div class="contact"><h3>Michigan SBDC — Southeast Region</h3><p class="role">Free, confidential consulting for Wayne, Oakland, Macomb (hosted at EMU)</p>
+          <dl><dt>Phone</dt><dd>State line <a href="tel:+18335220025">(833) 522-0025</a></dd>
+              <dt>Web</dt><dd><a href="https://michigansbdc.org/contact-us/">michigansbdc.org/contact-us</a></dd>
+              <dt>Why</dt><dd>No-cost consulting: pricing, cash-flow model, grant application read-through.</dd></dl>
+          <p class="ask"><b>Do:</b> Register online first; ask for a consultant who has worked with product/maker businesses.</p></div>
+        <div class="contact"><h3>Eastern Market — Sunday Street Market</h3><p class="role">Artisan market, June–September, Sundays 10–4, Shed 5</p>
+          <dl><dt>Email</dt><dd><a href="mailto:marketmanager@easternmarket.org">marketmanager@easternmarket.org</a></dd>
+              <dt>Web</dt><dd><a href="https://easternmarket.org/grow-your-business/">easternmarket.org/grow-your-business</a></dd>
+              <dt>Why</dt><dd>The launch venue in the plan. Vendor spaces are juried and subject to availability.</dd></dl>
+          <p class="ask"><b>Ask:</b> Artisan fee and application deadline for the 2027 season? Any fall/holiday market dates still open in 2026?</p></div>
+        <div class="contact"><h3>Amber Grant (WomensNet)</h3><p class="role">National monthly grant for women-owned businesses</p>
+          <dl><dt>Web</dt><dd><a href="https://ambergrantsforwomen.com/">ambergrantsforwomen.com</a></dd>
+              <dt>Why</dt><dd>$10,000 monthly; short essay; $15 fee; monthly winners eligible for a $50,000 year-end grant.</dd></dl>
+          <p class="ask"><b>Do:</b> Apply every month. Also register at <a href="https://www.ifundwomen.com/">ifundwomen.com</a> and <a href="https://helloalice.com/">helloalice.com</a>.</p></div>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>The questions to ask every shop</h2>
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>#</th><th>Question</th><th>Why it matters</th></tr>
+          <tr><td><b>1</b></td><td>Do you make structured bags with hardware, or apparel only?</td><td>Saves the call if it's the wrong shop.</td></tr>
+          <tr><td><b>2</b></td><td>What is your first-sample fee and how long does it take?</td><td>Typical $150–500; 2–4 weeks.</td></tr>
+          <tr><td><b>3</b></td><td>Minimum order, and price per unit at 10 / 25 / 50?</td><td>Unit price usually drops 30–40% from 10 to 50.</td></tr>
+          <tr><td><b>4</b></td><td>Can you set grommets, rivets and D-rings in-house?</td><td>Otherwise you finish them yourself.</td></tr>
+          <tr><td><b>5</b></td><td>Do you source materials or do we supply them (cut-make vs. full package)?</td><td>Changes cash flow and who owns fabric risk.</td></tr>
+          <tr><td><b>6</b></td><td>What files do you want — SVG, DXF, PDF, tech pack?</td><td>We have all four ready.</td></tr>
+          <tr><td><b>7</b></td><td>Do you cut by laser, die, or hand? Any width limits?</td><td>Our pattern is nested for 54-in fabric.</td></tr>
+          <tr><td><b>8</b></td><td>Lead time from approved sample to finished batch?</td><td>Plan says launch in week 10.</td></tr>
+          <tr><td><b>9</b></td><td>What is your defect / rework policy?</td><td>Ask before, not after.</td></tr>
+          <tr><td><b>10</b></td><td>Can we visit the floor while our sample is sewn?</td><td>Photos for the book and the grant application.</td></tr>
+          <tr><td><b>11</b></td><td>Do you have a leather sewist or leather machines (walking foot, cylinder arm)?</td><td>Needed for the leather versions.</td></tr>
+          <tr><td><b>12</b></td><td>Can you also quote the three padded 600D booth wraps?</td><td>One vendor for both saves setup fees.</td></tr>
+        </table>
+      </div>
+      <p class="script">“Hi, I'm Erika, I'm launching a Detroit-made handbag line. I have finished patterns,
+      a tech pack and a sewn prototype for a structured canvas bag with chain hardware. I'm looking for a
+      first sample and pricing for 10, 25 and 50 units, and I'd like to know your sample fee, minimum and
+      lead time. Who should I send the files to?”</p>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>What it should cost (estimates)</h2>
+      <p class="lede">Material figures come from the pipeline takeoffs (draft prices). Labor and fees are
+      market estimates for a small Detroit shop — every quote you collect replaces a line here.</p>
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>Per bag</th><th>Canvas</th><th>Leather</th><th>Note</th></tr>
+          <tr><td>Body + trim fabric</td><td><b>$3.82–7.05</b></td><td><b>$25–45</b></td><td>Pipeline takeoff at $18/yd placeholder; leather at $8–12/sq ft</td></tr>
+          <tr><td>Lining + interfacing</td><td><b>$3–5</b></td><td><b>$4–6</b></td><td>Estimate</td></tr>
+          <tr><td>Hardware (chain, 2 D-rings, zipper, slider, pull)</td><td><b>$8–15</b></td><td><b>$10–20</b></td><td>Buckleguy / Ohio Travel Bag</td></tr>
+          <tr><td>Thread, edge paint, packaging</td><td><b>$1–3</b></td><td><b>$2–5</b></td><td>Estimate</td></tr>
+          <tr><td><b>Materials subtotal</b></td><td><b>$16–30</b></td><td><b>$41–76</b></td><td></td></tr>
+          <tr><td>Contract sewing labor, 10-unit run</td><td><b>$35–60</b></td><td><b>$60–110</b></td><td>Structured bag with hardware</td></tr>
+          <tr><td>Contract sewing labor, 50-unit run</td><td><b>$25–40</b></td><td><b>$45–80</b></td><td>Setup amortized</td></tr>
+          <tr><td><b>Landed cost at 50 units</b></td><td><b>$41–70</b></td><td><b>$86–156</b></td><td></td></tr>
+          <tr><td><b>Suggested retail (2.2–2.5× landed)</b></td><td><b>$120–175</b></td><td><b>$220–390</b></td><td>Check against Detroit makers at Eastern Market</td></tr>
+        </table>
+      </div>
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>One-time and fixed</th><th>Estimate</th><th>Note</th></tr>
+          <tr><td>Felt fit-check (laser, per pattern)</td><td><b>$15–40</b></td><td>Ponoko instant quote, or one Hawk day pass</td></tr>
+          <tr><td>Factory first sample (per style)</td><td><b>$150–500</b></td><td>A finished pattern + tech pack should land at the low end</td></tr>
+          <tr><td>Makerspace pass</td><td><b>day $10–25 / month $40–80</b></td><td>Estimate — confirm at fhgov.com/makerspace</td></tr>
+          <tr><td>Prototype materials (2 yd fabric + hardware)</td><td><b>$60–120</b></td><td>Haberman + online hardware</td></tr>
+          <tr><td>Booth wraps materials, per kit</td><td><b>$74.68</b></td><td>Pipeline takeoff (draft): outer $38.15, liner $11.88, foam $24.65</td></tr>
+          <tr><td>Booth wraps hardware (72 grommets, 22 yd webbing, 6 buckles, knobs)</td><td><b>$90–140</b></td><td>Estimate</td></tr>
+          <tr><td>Booth wraps contract sewing (3 padded wraps)</td><td><b>$150–300</b></td><td>Ask ISAIC to quote with the bags</td></tr>
+          <tr><td>Eastern Market Sunday artisan booth</td><td><b>$40–100 / day</b></td><td>Estimate — ask the market manager</td></tr>
+          <tr><td>Amber Grant application</td><td><b>$15</b></td><td>Monthly</td></tr>
+          <tr><td>Michigan LLC filing + EIN</td><td><b>$50 + $0</b></td><td>Needed for every grant, if not already done</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <hr class="seam">
+
+    <section>
+      <h2>The handoff kit — what a shop needs from you</h2>
+      <div class="tablewrap">
+        <table class="spec">
+          <tr><th>Item</th><th>Where it lives</th><th>Status</th></tr>
+          <tr><td>Pattern pieces, SVG in millimetres, 10 mm seam allowance, every piece named</td><td>patterns/&lt;bag&gt;/</td><td>Pipeline output; curate seams first</td></tr>
+          <tr><td>DXF of the same pieces for laser / CNC cutting</td><td>patterns/&lt;bag&gt;/</td><td>Pipeline output</td></tr>
+          <tr><td>Nested cut layout at 54 in with utilization and yardage</td><td>takeoffs/&lt;bag&gt;/</td><td>Pipeline output</td></tr>
+          <tr><td>Tech pack: dimensions, piece list, materials, hardware BOM, construction notes</td><td>techpack/&lt;bag&gt;.md</td><td>Fill construction notes while sewing prototype #1</td></tr>
+          <tr><td>Sewn prototype — the shop copies what it can touch</td><td>Erika</td><td>Week 4</td></tr>
+          <tr><td>Photos: front, back, inside, hardware close-ups</td><td>designs/&lt;bag&gt;/</td><td>Weeks 4–6</td></tr>
+          <tr><td>Material swatches with supplier + SKU; hardware samples in a bag</td><td>Physical</td><td>Week 2</td></tr>
+          <tr><td>Quantity, target unit cost, need-by date, ship-to address</td><td>One page</td><td>Week 7</td></tr>
+        </table>
+      </div>
+      <p class="mnote">Not published by the shops and therefore left blank: phone numbers for Soft Goods
+      Detroit, D'Artillery, OmniCorp and Maker Works — use their websites. The Argonaut Building address is
+      the College for Creative Studies' Taubman Center; confirm Shinola's visitor entrance before visiting.</p>
+    </section>
+  </div>
+
   <hr class="seam">
 
   <footer class="foot">
@@ -840,7 +1090,7 @@
     });
     function fromHash() {
       var h = location.hash.replace('#', '');
-      if (h === 'plan' || h === 'brief' || h === 'status' || h === 'models' || h === 'stand') show(h);
+      if (h === 'plan' || h === 'brief' || h === 'status' || h === 'models' || h === 'stand' || h === 'make') show(h);
     }
     window.addEventListener('hashchange', fromHash);
     fromHash();
